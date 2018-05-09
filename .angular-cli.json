@@ -21,14 +21,13 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "../node_modules/angular-tree-component/dist/angular-tree-component.css",
         "../node_modules/ngx-toastr/toastr.css",
         "styles.css"
       ],
       "scripts": ["../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"],
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../src/js/age.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
