@@ -1,0 +1,83 @@
+{
+    "Work1": {
+        "title": "Askme",
+        "customer": "Noordhoff-Health & PPZ",
+        "wysignl": "Askme is een webapplicatie waarin medewerkers van een (zorg)instelling, snel handig informatie op kunnen zoeken. AskMe als tool haakt in op de noodzaak van EPSS (Electronic Perfomance support) op de werkvloer. Afnemers kunnen hun eigen objecten aanmaken en beheren. Dit alles draait in een webomgeving zodat elk apparaat met een browser ermee kan verbinden.<br><br>Binnen het hele <a href='https://askme-app.nl/ ' target='blank'>AskMe</a> project heb ik samengewerkt met Noordhoff-Health en Profportaal Zorg en heb ik gewerkt aan een SPA (Single Page Application) met behulp van Angular.",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/askme0.png",
+        "tags": ["Front-End","WebApp","Angular"],
+        "images": ["assets/portfolio/askme0.png", "assets/portfolio/askme5.png", "assets/portfolio/askme2.png","assets/portfolio/askme4.png" , "assets/portfolio/askme3.png"]
+    },
+    "Work2": {
+        "title": "E-waste arcades",
+        "customer": "E-waste arcades",
+        "wysignl": "E-waste Arcades zet zich in om hergebruik van grondstoffen te bevorderen en bewustzijn te creëren over elektronisch afval. Door recyclen leuk en makkelijk te maken willen ze het gat tussen de consument en de recycler overbruggen.<br><br>Er zijn verschillende arcade kasten gemaakt waarmee je een spel kunt spelen door je oude telefoon in te leveren of door afval te scheiden. Voor dit bedrijf heb ik een game-interface gemaakt en 4 spellen gemaakt + highscore systeem. Later heb ik ook een API geschreven waardoor alle kasten uitglezen kunnen worden op een pagina. Hier kunnen kasten beheerd worden en kunnen bepaalde acties worden opgezet.<br><br>Voor meer informatie zie <a href='https://ewastearcades.nl' target='blank'>ewastearcades.nl.</a>",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/arcades1.jpg",
+        "tags": ["HTML5 Games","PhaserJS","PHP API","Angular uitleespagina"],
+        "images": ["assets/portfolio/arcades1.jpg", "assets/portfolio/arcades2.jpg" , "assets/portfolio/arcades3.jpg", "assets/portfolio/arcades4.jpg","assets/portfolio/arcades5.jpg","assets/portfolio/arcades6.jpg","assets/portfolio/arcades7.jpg","assets/portfolio/arcades8.png","assets/portfolio/arcades9.png"]
+    },
+    "Work3": {
+        "title": "ETZ E-Learning",
+        "customer": "Elisabeth-TweeSteden Ziekenhuis",
+        "wysignl": "Voor het ETZ Ziekenhuis ben ik al wat jaren bezig met het ondersteunen van het Leerhuis. Dit houdt o.a. in dat ik help om de bestaande E-Learning lesstof zo gebruikersvriendelijk mogelijk probeer aan te bieden aan de werknemers op de werkvloer.<br><br>Ook ondersteun ik het Leerhuis door maken van animaties, en het help ik door het schrijven van applicaties die processen versnellen binnen de afdeling.",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/etz7.png",
+        "tags": ["E-Learning","Animaties","Application development"],
+        "images": ["assets/portfolio/etz7.png","assets/portfolio/etz0.png", "assets/portfolio/etz6.png", "assets/portfolio/etz.jpg","assets/portfolio/etz4.jpg",  "assets/portfolio/etz2.jpg","assets/portfolio/etz3.jpg", "assets/portfolio/etz5.jpg"]
+    },
+    "Work5": {
+        "title": "Lodge aan zee",
+        "customer": "Lodgeaanzee.nl",
+        "wysignl": "<a href='http://www.lodgeaanzee.nl' target='blank'>LodgeaanZee.nl</a> verhuurt een vakantiehuisje en ik heb voor hun een site verzorgd met een eigen custom CMS. De afbeeldingen en teksten kunnen ze zelf wijzigen en er is ook een bookingssyteem in ingebouwd.",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/lodgeaanzee1.png",
+        "tags": ["AngularJS","PhP/mysql backend"],
+        "images": ["assets/portfolio/lodgeaanzee1.png", "assets/portfolio/lodgeaanzee2.png", "assets/portfolio/lodgeaanzee3.png", "assets/portfolio/lodgeaanzee4.png"]
+    },
+    "Work4": {
+        "title": "KennisCloud",
+        "customer": "Bibliotheek midden-brabant",
+        "wysignl": "Voor de Bibliotheek Midden-Brabant heb ik de beta versie van de KennisCloud mogen ontwikkelen. Deze vorm heeft zo'n 2,5 jaar online gestaan maar wordt in 2018 opnieuw gelanceerd. Aan de beta hebben zo'n 500 mensen meegedaan. <br><br> De KennisCloud is een online platform waarop gebruikers kennis met elkaar kunnen delen. Door middel van zogenaamde 'KennisGroepen' kunnen gebruikers onderling kennis delen. Sitebezoekers kunnen deze zelf aanmaken. Ook kunnen hier handig evenementen aangemaakt worden zodat gebruikers zelf iets kunnen organiseren.<br><br><a href='https://www.kenniscloud.nl' target='blank'>KennisCloud</a> ",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/kc1.jpg",
+        "tags": ["Social Platform","Elgg"],
+        "images": ["assets/portfolio/kc1.jpg", "assets/portfolio/kc2.jpg", "assets/portfolio/kc3.jpg", "assets/portfolio/kc6.jpg", "assets/portfolio/kc4.jpg", "assets/portfolio/kc5.jpg"]
+    },
+    "Work6": {
+        "title": "Buurtrechten in beeld",
+        "customer": "LSA Bewoners",
+        "wysignl": "Voor <a href='https://www.lsabewoners.nl/' target='blank'>LSA Bewoners</a>  heb ik een <a href='https://www.lsabewoners.nl/buurtrechten/kaart/' target='blank'>interactieve kaart van Nederland</a> gemaakt die de buurtrechten per gemeente in beeld brengt.<br><br>LSA Bewoners - vult deze lijst samen met gemeenten in en stelt de data die hier uit voorkomt ook weer publiekelijk beschikbaar. Voor meer informatie over de buurtrechten <a href='https://www.lsabewoners.nl/buurtrechten/kennis/waarom-pleit-lsa-buurtrechten/' target='blank'>klik hier.</a>",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/lsa0.png",
+        "tags": ["AngularJS","PhP/mysql backend"],
+        "images": ["assets/portfolio/lsa0.png", "assets/portfolio/lsa1.png", "assets/portfolio/lsa2.png"]
+    },
+    "Work7": {
+        "title": "Picture it",
+        "customer": "Gemeente Breda & Dropstuff",
+        "wysignl": "Een heel erg tof project waarmee ik samen heb gewerkt met <a href='http://www.noralie.nl' target='blank'>Noralie</a> en <a href='http://www.timvancromvoirt.com/' target='blank'>Tim van Cromvoirt</a><br><br>De opdracht was om een interactief spel te maken op een groot LED bord van Dropstuff die op station Breda stond. Voorbijgangers konden doormiddel door op hun telefoon een foto te uploaden, een interactieve kleurplaat daarmee inkleuren/opvullen. Zo maakte men samen hele kunstwerken<br><br>Ik heb de ontwikkelaarsrol gehad in dat project. Het spel is jammer genoeg niet meer te spelen maar was geprogrameerd met actionscript3, aangestuurd met een mobile php backend.",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/pictureit.jpg",
+        "tags": ["Actionscript3","Game development", "PHP/MYSQL"],
+        "images": ["assets/portfolio/pictureit.jpg", "assets/portfolio/pictureit2.jpg", "assets/portfolio/pictureit3.jpg", "assets/portfolio/pictureit5.jpg"]
+    },
+    "Work8": {
+        "title": "Logo BenOK",
+        "customer": "Ben OK",
+        "wysignl": "Voor <a href='https://benok.info/' target='blank'>BenOK</a> heb ik een logo mogen ontwerpen. BenOK - is een collectief van verschillende OK's van Ziekenhuizen voor gediplomeerde operatieassistenten en anesthesiemedewerkers.",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/benok.png",
+        "tags": ["Design/Opmaak","Illustrator"],
+        "images": ["assets/portfolio/benok.png"]
+    },
+    "Work9": {
+        "title": "KennisCrowd",
+        "customer": "Bibliotheek Midden-Brabant",
+        "wysignl": "Samen met <a href='http://www.tannevanbree.nl' target='blank'>Tanne van Bree</a> heb ik de KennisCrowd gemaakt voor de Bibliotheek Midden-Brabant. Dit is een interactieve visualisatie waarop mensen in kaart worden gebracht en ingedeeld worden op bepaalde onderwerpen. Deze hebben de mensen zelf in kunnen vullen door middel van een web formulier.<br><br>De bibliotheek zet deze tool in bij evenementen. Tanne heeft de D3 visualisatie in Javascript verzorgd, en ik een AngularJS Front + php Back end als support tooling.",
+        "wysigen": "<b>Blabla</b> <br> Owyeaaa",
+        "cover": "assets/portfolio/crowd0.png",
+        "tags": ["Design/Opmaak","Illustrator"],
+        "images": ["assets/portfolio/crowd0.png","assets/portfolio/crowd1.jpg","assets/portfolio/crowd2.jpg","assets/portfolio/crowd3.png"]
+    }
+}

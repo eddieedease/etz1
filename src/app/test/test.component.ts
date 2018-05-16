@@ -1,5 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+import {
+  Router,
+  ActivatedRoute
+} from '@angular/router';
+import {
+  Http
+} from '@angular/http';
+import 'rxjs/add/operator/map';
+
+import {EdserService} from '../edser.service';
+
+// Needed for Jquery
+declare var $: any;
+
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -7,9 +22,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  constructor() { }
+  json;
+  questionArray;
+
+  // var for finishing test
+  testFinished = false;
+
+
+  // tslint:disable-next-line:max-line-length
+  constructor(private router: Router, private route: ActivatedRoute, private http_: Http, private edSer: EdserService) {
+    http_.get('assets/questions/questions5.json')
+      .map(response => response.json())
+      .subscribe(
+        article => {
+          // GET JSON Object --> change to array
+          this.json = article;
+          console.log(this.json);
+          this.questionArray = $.map(this.json, function (el) {
+            return el;
+          });
+          console.log(this.questionArray);
+        },
+        error => console.error(error));
+   }
 
   ngOnInit() {
+    
+  }
+
+  finishTest() {
+    this.testFinished = true;
   }
 
 }

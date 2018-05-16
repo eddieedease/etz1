@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [EdserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

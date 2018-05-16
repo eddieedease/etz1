@@ -9,14 +9,14 @@ body {
 }
 
 a {
-  color: #fdcc52;
+  color: #007bff;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
   transition: all .35s;
 }
 
 a:hover, a:focus {
-  color: #fcbd20;
+  color: #fff;
 }
 
 hr {
@@ -154,9 +154,8 @@ header.masthead {
   padding-top: 150px;
   padding-bottom: 100px;
   color: white;
-  background: url("/assets/bg-pattern.png"), #7b4397;
-  background: url("/assets/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
-  background: url("/assets/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+  background:  #7b4397;
+  background: linear-gradient(to left, #832fad, #ce0e58);
 }
 
 header.masthead .header-content {

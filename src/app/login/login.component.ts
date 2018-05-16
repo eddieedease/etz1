@@ -12,9 +12,23 @@ import {
 })
 export class LoginComponent implements OnInit {
 
+  // store user pwd
+  usrPwd = '';
+  errorMsg = false;
+
   constructor(private thisrouter: Router) { }
 
   ngOnInit() {
+  }
+
+
+  loginAttempt() {
+    if (this.usrPwd === '') {
+      console.log('why');
+      this.errorMsg = true;
+    } else {
+      this.thisrouter.navigate(['/', 'test']);
+    }
   }
 
 }

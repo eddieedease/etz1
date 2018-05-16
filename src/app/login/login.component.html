@@ -1,150 +1,106 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Inloggen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="">
+          <h5 class="m-b-2">Sleutel</h5>
+
+          <!-- <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Organisatie
+            </button> {{dropdownOrga}}
+            <br>
+            <br>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button" (click)="dropdownOrga = 'orga 1'">Orga 1</button>
+              <button class="dropdown-item" type="button" (click)="dropdownOrga = 'orga 2'">Orga 2</button>
+              <button class="dropdown-item" type="button" (click)="dropdownOrga = 'orga 3'">Orga 3</button>
+            </div>
+          </div> -->
+
+          <fieldset class="form-group has-danger">
+            <label for="password" class="form-control-label">Vul hier de verkregen sleutel in:</label>
+            <input [(ngModel)]="usrPwd" [ngModelOptions]="{standalone: true}" type="password" class="form-control form-control-danger"
+              id="password">
+          </fieldset>
+
+
+          <button (click)="loginAttempt()" data-dismiss="modal" class="btn btn-primary btn-lg">Login</button>
+          
+        </form><br>
+        <div style='color:orangered' *ngIf="errorMsg == true">Geen (geldige) sleutel ingevoerd <br>** Dev: ** Everything goes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Test</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#download">Hallo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#features">Links</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Hier</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <header class="masthead">
-      <div class="container h-100">
-        <div class="row h-100">
-          <div class="col-lg-7 my-auto">
-            <div class="header-content mx-auto">
-              <h1 class="mb-5">Dit is helemaal geweldig.</h1>
-              <a routerLink="/test" class="btn btn-outline btn-xl js-scroll-trigger">Start!</a>
-            </div>
-          </div>
-          <div class="col-lg-5 my-auto">
-            
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section class="download bg-primary text-center" id="download">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 mx-auto">
-            <h2 class="section-heading">Vul de test in!</h2>
-            <p>Geweldig wauw!</p>
-            <div class="badges">
-              <a class="badge-link" href="#"><img src="assets/google-play-badge.svg" alt=""></a>
-              <a class="badge-link" href="#"><img src="assets/app-store-badge.svg" alt=""></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-heading text-center">
-          <h2>nergens zoals hier</h2>
-          <p class="text-muted">Yez!</p>
-          <hr>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 my-auto">
-          
-          </div>
-          <div class="col-lg-8 my-auto">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="feature-item">
-                    <i class="icon-screen-smartphone text-primary"></i>
-                    <h3>Super 1</h3>
-                    <p class="text-muted">Form reactor!</p>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="feature-item">
-                    <i class="icon-camera text-primary"></i>
-                    <h3>Super 2</h3>
-                    <p class="text-muted">Edease op je beeldscherm</p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="feature-item">
-                    <i class="icon-present text-primary"></i>
-                    <h3>Super 3</h3>
-                    <p class="text-muted">Geweldig</p>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="feature-item">
-                    <i class="icon-lock-open text-primary"></i>
-                    <h3>Open Source</h3>
-                    <p class="text-muted">Want zo zijn wij</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="cta-content">
-        <div class="container">
-          <h2>Stop.<br>Start.</h2>
-          <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Neem me mee!</a>
-        </div>
-      </div>
-      <div class="overlay"></div>
-    </section>
-
-    <section class="contact bg-primary" id="contact">
-      <div class="container">
-        <h2>gemaakt met
-          <i class="fa fa-heart"></i>
-          !</h2>
-        <ul class="list-inline list-social">
-          <li class="list-inline-item social-twitter">
-            <a href="#">
-              <i class="fa fa-twitter"></i>
-            </a>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger">
+        <i class="fa fa-superpowers"></i>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger">Ruimte</a>
           </li>
-          <li class="list-inline-item social-facebook">
-            <a href="#">
-              <i class="fa fa-facebook"></i>
-            </a>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger">Voor</a>
           </li>
-          <li class="list-inline-item social-google-plus">
-            <a href="#">
-              <i class="fa fa-google-plus"></i>
-            </a>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger">Links</a>
           </li>
         </ul>
       </div>
-    </section>
+    </div>
+  </nav>
 
- 
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 my-auto">
 
-  </div>
+          <div class="header-content mx-auto">
+            <img src="assets/logo.png" class="img-fluid" alt="Responsive image">
+            <h1 class="mb-5">Afdeling in beeld</h1>
+            <a data-toggle="modal" data-target="#exampleModal" class="btn btn-outline btn-xl js-scroll-trigger">Start!</a>
+          </div>
+        </div>
+        <div class="col-lg-5 my-auto">
+
+        </div>
+      </div>
+    </div>
+  </header>
 
 
 
+  <section class="contact bg-primary" id="contact">
+    <div class="container">
+      <h4>gemaakt met
+        <i class="fa fa-heart"></i>
+        door
+        <a href="https://www.edease.nl" target="_blank">EDease</a>
+      </h4>
+    </div>
+  </section>
 
+
+
+</div>

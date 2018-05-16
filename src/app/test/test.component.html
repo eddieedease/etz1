@@ -1,28 +1,111 @@
-<div class="container">
-
-        
-    
-
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Vraag</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="quiz" id="quiz" data-toggle="buttons">
-                    <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">1 One</label>
-                    <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">2 Two</label>
-                    <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">3 Three</label>
-                    <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">4 Four</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
+<div class="container-fluid">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Vragenlijst</h5>
+     <!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
       </div>
+      <div class="modal-body">
+
+        <div class="well well-sm text-center">
+          <p><b>Vraag 1</b></p> 
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id lorem consequat velit iaculis lobortis eu et dui. Vivamus malesuada eleifend nunc. Curabitur a fermentum lectus.</p>
+          <div class="btn-group">
+            <label class="btn btn-success active">
+              1
+              <br>
+              <input type="radio" name="group1" autocomplete="off" checked>
+            </label>
+            <label class="btn btn-info">
+              2
+              <br>
+              <input type="radio" name="group1" autocomplete="off">
+
+            </label>
+            <label class="btn btn-primary">
+              3
+              <br>
+              <input type="radio" name="group1" autocomplete="off">
+
+            </label>
+
+            <label class="btn btn-warning">
+              4
+              <br>
+              <input type="radio" name="group1" autocomplete="off">
+
+            </label>
+
+            <label class="btn btn-danger">
+              5
+              <br>
+              <input type="radio" name="group1" autocomplete="off">
+
+            </label>
+
+          </div>
+
+        </div>
+
+        <hr>
+        <div class="well well-sm text-center">
+            <p><b>Vraag 2</b></p> 
+            <p>Praesent efficitur, velit vel finibus efficitur, elit leo volutpat magna, a faucibus justo orci ut velit. Quisque rhoncus dignissim ex, a congue libero aliquam a.</p>
+            <div class="btn-group">
+              <label class="btn btn-success active">
+                1
+                <br>
+                <input type="radio" name="group2" autocomplete="off" checked>
+              </label>
+              <label class="btn btn-info">
+                2
+                <br>
+                <input type="radio" name="group2" autocomplete="off">
+  
+              </label>
+              <label class="btn btn-primary">
+                3
+                <br>
+                <input type="radio" name="group2" autocomplete="off">
+  
+              </label>
+  
+              <label class="btn btn-warning">
+                4
+                <br>
+                <input type="radio" name="group2" autocomplete="off">
+  
+              </label>
+  
+              <label class="btn btn-danger">
+                5
+                <br>
+                <input type="radio" name="group2" autocomplete="off">
+  
+              </label>
+  
+            </div>
+  
+          </div>
+
+          <hr>
+
+
+          <div class="well well-sm text-center">
+              Etc..
+          </div>
+          
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="!testFinished" type="button" (click)="finishTest()" class="btn btn-secondary" data-dismiss="modal">Klaar met invullen</button>
+        <br><div *ngIf="testFinished">Bedankt voor het invullen! <a [routerLink]="['/login']">Terug naar homepage</a></div>
+      </div>
+    </div>
+  </div>
+</div>
