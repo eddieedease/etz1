@@ -1,101 +1,76 @@
-<div class="container-fluid">
-  <div class="modal-dialog modal-lg" role="document">
+<div class="bgfill">
+<div class="container">
+   
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Vragenlijst</h5>
+        <div class="text-center" style="margin: 0 auto;">
+            <img src="assets/logo.png" style="max-width: 250px" class="img-fluid text-center" alt="Responsive image"><br>
+        </div>
+       
+      <div class="modal-header text-center" style="margin: 0 auto;">
+        <h5 class="modal-title text-center">Vragenlijst</h5>
      <!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
       <div class="modal-body">
+        <div class="well well-sm">
+          <p style="padding-left:10px">Hieronder vind je een vragenlijst en info daarover komt hier...</p>
+            <div class="legend">
+                
+                <ul>
+                    <li><span class="btn-success"></span> 1 : Overduidelijk</li>
+                    <li><span class="btn-info"></span> 2 : Mee eens</li>
+                    <li><span class="btn-primary"></span> 3 : Neutraal</li>
+                    <li><span class="btn-warning"></span> 4 : Twijfelachtig</li>
+                    <li><span class="btn-danger"></span> 5 :  Niet mee eens</li>
+                    </ul>
+             </div>
+        </div>
+        <br><br><br><br>
 
-        <div class="well well-sm text-center">
-          <p><b>Vraag 1</b></p> 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id lorem consequat velit iaculis lobortis eu et dui. Vivamus malesuada eleifend nunc. Curabitur a fermentum lectus.</p>
+        <div *ngFor="let question of questionArray; let i = index"  class="well well-sm text-center">
+          <p><b>Vraag {{i + 1}}</b></p> 
+          <p>{{question.vraag}}</p>
           <div class="btn-group">
-            <label class="btn btn-success active">
+            <label class="btn btn-success">
               1
               <br>
-              <input type="radio" name="group1" autocomplete="off" checked>
+              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off" >
             </label>
             <label class="btn btn-info">
               2
               <br>
-              <input type="radio" name="group1" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off">
 
             </label>
             <label class="btn btn-primary">
               3
               <br>
-              <input type="radio" name="group1" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off" checked>
 
             </label>
 
             <label class="btn btn-warning">
               4
               <br>
-              <input type="radio" name="group1" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off">
 
             </label>
 
             <label class="btn btn-danger">
               5
               <br>
-              <input type="radio" name="group1" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off">
 
             </label>
 
           </div>
-
+          <hr>
         </div>
 
-        <hr>
-        <div class="well well-sm text-center">
-            <p><b>Vraag 2</b></p> 
-            <p>Praesent efficitur, velit vel finibus efficitur, elit leo volutpat magna, a faucibus justo orci ut velit. Quisque rhoncus dignissim ex, a congue libero aliquam a.</p>
-            <div class="btn-group">
-              <label class="btn btn-success active">
-                1
-                <br>
-                <input type="radio" name="group2" autocomplete="off" checked>
-              </label>
-              <label class="btn btn-info">
-                2
-                <br>
-                <input type="radio" name="group2" autocomplete="off">
-  
-              </label>
-              <label class="btn btn-primary">
-                3
-                <br>
-                <input type="radio" name="group2" autocomplete="off">
-  
-              </label>
-  
-              <label class="btn btn-warning">
-                4
-                <br>
-                <input type="radio" name="group2" autocomplete="off">
-  
-              </label>
-  
-              <label class="btn btn-danger">
-                5
-                <br>
-                <input type="radio" name="group2" autocomplete="off">
-  
-              </label>
-  
-            </div>
-  
-          </div>
+       
+    
 
-          <hr>
-
-
-          <div class="well well-sm text-center">
-              Etc..
-          </div>
           
 
 
@@ -106,6 +81,6 @@
         <button *ngIf="!testFinished" type="button" (click)="finishTest()" class="btn btn-secondary" data-dismiss="modal">Klaar met invullen</button>
         <br><div *ngIf="testFinished">Bedankt voor het invullen! <a [routerLink]="['/login']">Terug naar homepage</a></div>
       </div>
-    </div>
+  
   </div>
-</div>
+</div></div>

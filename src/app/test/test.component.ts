@@ -11,9 +11,7 @@ import 'rxjs/add/operator/map';
 
 import {EdserService} from '../edser.service';
 
-// Needed for Jquery
 declare var $: any;
-
 
 @Component({
   selector: 'app-test',
@@ -37,7 +35,7 @@ export class TestComponent implements OnInit {
         article => {
           // GET JSON Object --> change to array
           this.json = article;
-          console.log(this.json);
+          // console.log(this.json);
           this.questionArray = $.map(this.json, function (el) {
             return el;
           });
@@ -47,7 +45,8 @@ export class TestComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    // scroll to top
+    $('html,body').scrollTop(0);
   }
 
   finishTest() {

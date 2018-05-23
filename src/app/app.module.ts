@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+
 import {
   HttpModule,
   JsonpModule
@@ -18,14 +20,19 @@ import { AboutComponent } from './about/about.component';
 import { EdserService } from './edser.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+
+// DATATABLE COMPONENT
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
-// app routes
+
 
 const appRoutes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
@@ -39,7 +46,8 @@ const appRoutes: Routes = [
     TestComponent,
     AboutComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -51,7 +59,8 @@ const appRoutes: Routes = [
     JsonpModule,
     FormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added,
+    NgxDatatableModule
   ],
   providers: [EdserService],
   bootstrap: [AppComponent]
