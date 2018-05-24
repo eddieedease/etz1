@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {
   Router,
   ActivatedRoute,
@@ -23,7 +26,10 @@ export class LoginComponent implements OnInit {
   usrPwd = '';
   errorMsg = false;
 
-  constructor(private thisrouter: Router) { }
+  // loading visible view
+  loading = false;
+
+  constructor(private thisrouter: Router) {}
 
   ngOnInit() {
     // scroll to top

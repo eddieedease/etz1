@@ -24,6 +24,8 @@ import { AdminComponent } from './admin/admin.component';
 
 // DATATABLE COMPONENT
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { LoadingModule } from 'ngx-loading';
+
 
 
 
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added,
-    NgxDatatableModule
+    NgxDatatableModule,
+    LoadingModule
   ],
   providers: [EdserService],
   bootstrap: [AppComponent]
