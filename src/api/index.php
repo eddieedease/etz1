@@ -33,6 +33,53 @@ $app->get('/testcall', function (Request $request, Response $response) {
 	return $response;
 });
 
+// LOGIN WITH KEY, give back group ID.
+// TODO: Make DOC
+$app->get('/login/{keyy}', function (Request $request, Response $response) {
+	// what key
+	$keyy = $request->getAttribute('keyy');
+
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+
+	// SQL QUERY FOR getting group id with key
+	$sqlgetkey = "SELECT * FROM groups WHERE paskey = '$keyy'";
+	$stmtgetkey = $dbh->prepare($sqlgetkey);
+	$stmtgetkey->execute();
+	$resultgetkey = $stmtgetkey->fetchAll(PDO::FETCH_ASSOC);
+
+	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
+	$response = json_encode($resultgetkey);
+	return $response;
+});
+
+
+// LOGIN WITH KEY, give back group ID.
+// TODO: Make DOC
+$app->get('/admnlogin/{keyy}', function (Request $request, Response $response) {
+	// what key
+	$keyy = $request->getAttribute('keyy');
+
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+
+	// SQL QUERY FOR getting group id with key
+	$sqlgetkey = "SELECT * FROM cfg WHERE pwd = '$keyy'";
+	$stmtgetkey = $dbh->prepare($sqlgetkey);
+	$stmtgetkey->execute();
+	$resultgetkey = $stmtgetkey->fetchAll(PDO::FETCH_ASSOC);
+
+	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
+	$response = json_encode($resultgetkey);
+	return $response;
+});
+
+
+
+
+
+
+
 
 // API CALL: the GET specific LESSON
 // TODO: Make DOC
@@ -58,119 +105,8 @@ $app->get('/getlesson/{lessonid}', function (Request $request, Response $respons
 }
 );
 
-// TODO: API edit CONTENT item
-//
-//
-//
-
-
-// TODO: API edit LESSON item
-//
-//
-//
-
-
-// TODO: SAVE TREE of LESSON
-//
-//
-//
-
-
- 
-// GET specific CONTENT item
-// TODO: Make DOC
-$app->get('/getcontent/{contentid}', function (Request $request, Response $response) {
-	$contentid = $request->getAttribute('contentid');
-	include 'db.php';
-	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
-
-	$sqllessons = "SELECT * FROM content WHERE id = '$contentid'";
-	$stmtlessons = $dbh->prepare($sqllessons);
-	$stmtlessons->execute();
-	$resultlessons = $stmtlessons->fetchAll(PDO::FETCH_ASSOC);
-	
-	// 	convert it all to jSON TODO change result
-	$response = json_encode($resultlessons);
-	return $response;
-}
-);
-
-// NOTE: the getAll API CALL
-// TODO: Make DOC
-$app->get('/getcourses', function (Request $request, Response $response) {
-	include 'db.php';
-	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
-	// 	NOTE 5 pieces --> [0] actions [1] arcades [2] archive [3] highscores [4] teams
-	// 	a query get all the correct records from the gemeenten table
-	$sqllessons = 'SELECT * FROM courses';
-	$stmtlessons = $dbh->prepare($sqllessons);
-	$stmtlessons->execute();
-	$resultlessons = $stmtlessons->fetchAll(PDO::FETCH_ASSOC);
-	
-	// 	NOTE colleting everything for converting
-	$result = array();
-	array_push($result, $resultlessons);
-	
-	// 	convert it all to jSON TODO change result
-	$response = json_encode($result);
-	return $response;
-}
-);
-
-
-// TODO: Make DOC, GET SPECIFIC COURSEitem
-$app->get('/getcourse/{courseid}', function (Request $request, Response $response) {
-	$courseid = $request->getAttribute('courseid');
-	include 'db.php';
-	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
-
-	$sqllessons = "SELECT * FROM courses WHERE id = '$courseid'";
-	$stmtlessons = $dbh->prepare($sqllessons);
-	$stmtlessons->execute();
-	$resultlessons = $stmtlessons->fetchAll(PDO::FETCH_ASSOC);
-	
-	// 	convert it all to jSON TODO change result
-	$response = json_encode($resultlessons);
-	return $response;
-}
-);
-
-// TODO: get lessons info of course
-// TODO: Make DOC, GET SPECIFIC COURSEitem
-$app->get('/getcourseinfo/{courseid}', function (Request $request, Response $response) {
-	$courseid = $request->getAttribute('courseid');
-	include 'db.php';
-	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
-
-	$sqllessons = "SELECT options FROM courses WHERE id = '$courseid'";
-	$stmtlessons = $dbh->prepare($sqllessons);
-	$stmtlessons->execute();
-	$resultlessons = $stmtlessons->fetchAll(PDO::FETCH_ASSOC);
-	$aioptions = $resultlessons[0]['options'];
-
-	$aioptionsform = json_encode($aioptions);
-	$cleanString = filter_var($aioptionsform, FILTER_SANITIZE_STRING);
-
-	// get lesson names
-	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
-	$sql2= "SELECT id,name FROM lessons WHERE id IN ($aioptions)";
-	$stmtaddfailed = $dbh->prepare($sql2);
-	$stmtaddfailed->execute();
-	$resultaddfailed = $stmtaddfailed->fetchAll(PDO::FETCH_ASSOC);
-
-	// debugger
-	//$data = array('Jsonresponse' => $resultaddfailed, 'debug' => $sql2);
-	//$response = json_encode($data);
-	//return $response;
-
-	// give titles names back
-	$response = json_encode($resultaddfailed);
-	return $response;
-}
-);
 
 
 
-
-
+// run the app
 $app->run();

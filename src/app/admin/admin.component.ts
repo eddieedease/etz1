@@ -5,6 +5,10 @@ import {
   Params
 } from '@angular/router';
 
+import {
+  EdserService
+} from '../edser.service';
+
 declare var $: any;
 
 @Component({
@@ -37,7 +41,7 @@ export class AdminComponent implements OnInit {
     { name: 'Company' }
   ];
 
-  constructor(private thisrouter: Router) {
+  constructor(private thisrouter: Router, private serCred: EdserService) {
 
    }
 
@@ -49,12 +53,25 @@ export class AdminComponent implements OnInit {
   }
 
 
+
   loginAttempt() {
     if (this.admnPwd === '') {
       this.errorMsg = true;
     } else {
+      this.loading = true;
+    this.serCred.API_admnlogin(this.admnPwd).subscribe(value => this.gotLogin(value));
+    }
+  }
+
+  gotLogin(_val) {
+    this.loading = false;
+    // Check if response exist
+    if (_val[0]) {
       this.adminLogged = true;
+      // TODO: Set some service variables over here
       $('#adminModal').modal('hide');
+    } else {
+      this.errorMsg = true;
     }
   }
 

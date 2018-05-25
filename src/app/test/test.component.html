@@ -17,65 +17,59 @@
           <p style="padding-left:10px">Hieronder vind je een vragenlijst en info daarover komt hier...</p>
             <div class="legend">
                 
+              
                 <ul>
-                    <li><span class="btn-success"></span> 1 : Overduidelijk</li>
-                    <li><span class="btn-info"></span> 2 : Mee eens</li>
-                    <li><span class="btn-primary"></span> 3 : Neutraal</li>
-                    <li><span class="btn-warning"></span> 4 : Twijfelachtig</li>
-                    <li><span class="btn-danger"></span> 5 :  Niet mee eens</li>
+                    <li><span class="btn-danger"></span> 1 : Nooit</li>
+                    <li><span class="btn-warning"></span> 2 : Zelden</li>
+                    <li><span class="btn-primary"></span> 3 : Soms</li>
+                    <li><span class="btn-info"></span> 4 : Meestal</li>
+                    <li><span class="btn-success"></span> 5 :  Altijd</li>
                     </ul>
              </div>
         </div>
         <br><br><br><br>
 
-        <div *ngFor="let question of questionArray; let i = index"  class="well well-sm text-center">
+        <div *ngFor="let question of questionArray; let i = index"  class="well well-sm text-center"><br><br>
           <p><b>Vraag {{i + 1}}</b></p> 
           <p>{{question.vraag}}</p>
           <div class="btn-group">
-            <label class="btn btn-success">
+            <label class="btn btn-danger">
               1
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off" >
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="1" [(ngModel)]="question.answer" autocomplete="off" >
             </label>
-            <label class="btn btn-info">
+            <label class="btn btn-warning" style="color:white !important">
               2
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="2" [(ngModel)]="question.answer" autocomplete="off">
 
             </label>
             <label class="btn btn-primary">
               3
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off" checked>
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="3" [(ngModel)]="question.answer" autocomplete="off" >
 
             </label>
 
-            <label class="btn btn-warning">
+            <label class="btn btn-info">
               4
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="4" [(ngModel)]="question.answer" autocomplete="off">
 
             </label>
 
-            <label class="btn btn-danger">
+            <label class="btn btn-success">
               5
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" autocomplete="off">
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="5" [(ngModel)]="question.answer" autocomplete="off">
 
             </label>
 
-          </div>
+          </div><br>
+          <!-- {{question.answer}} -->
+          <br>
           <hr>
         </div>
-
-       
-    
-
-          
-
-
-
-
       </div>
       <div class="modal-footer">
         <button *ngIf="!testFinished" type="button" (click)="finishTest()" class="btn btn-secondary" data-dismiss="modal">Klaar met invullen</button>

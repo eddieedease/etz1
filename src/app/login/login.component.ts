@@ -8,6 +8,10 @@ import {
   Params
 } from '@angular/router';
 
+import {
+  EdserService
+} from '../edser.service';
+
 
 declare var $: any;
 
@@ -29,7 +33,7 @@ export class LoginComponent implements OnInit {
   // loading visible view
   loading = false;
 
-  constructor(private thisrouter: Router) {}
+  constructor(private thisrouter: Router, private serCred: EdserService) {}
 
   ngOnInit() {
     // scroll to top
@@ -41,8 +45,20 @@ export class LoginComponent implements OnInit {
     if (this.usrPwd === '') {
       this.errorMsg = true;
     } else {
+      this.loading = true;
+    this.serCred.API_login(this.usrPwd).subscribe(value => this.gotLogin(value));
+    }
+  }
+
+  gotLogin(_val) {
+    this.loading = false;
+    // Check if response exist
+    if (_val[0]) {
+      // TODO: Set some service variables over here
       $('#exampleModal').modal('hide');
       this.thisrouter.navigate(['/', 'test']);
+    } else {
+      this.errorMsg = true;
     }
   }
 

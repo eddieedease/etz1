@@ -1,22 +1,154 @@
 {
     "Vraag1": {
-        "vraag": "Dit is vraag 1",
-        "ranking": []
+        "vraag": "Teamleden geven hun fouten toe.",
+        "type": 1
     },
     "Vraag2": {
-        "vraag": "Dit is vraag 2",
-        "ranking": []
+        "vraag": "Teamleden zijn gepassioneerd en open in de bespreking van problemen.",
+        "type": 2
     },
     "Vraag3": {
-        "vraag": "Dit is vraag 3",
-        "ranking": []
+        "vraag": "Teamleden hebben snel oog voor de bijdragen en prestaties van anderen.",
+        "type": 5
     },
     "Vraag4": {
-        "vraag": "Dit is vraag 4",
-        "ranking": []
+        "vraag": "Teambijeenkomsten zijn interessant en inspirerend (niet saai).",
+        "type": 2
     },
     "Vraag5": {
-        "vraag": "Dit is vraag 5",
-        "ranking": []
+        "vraag": "Tijdens teamvergaderingen worden de belangrijkste en moeilijkste kwesties besproken.",
+        "type": 2
+    },
+    "Vraag6": {
+        "vraag": "Teamleden erkennen hun zwakheden tegenover elkaar.",
+        "type": 1
+    },
+    "Vraag7": {
+        "vraag": "Teamleden geven hun mening weer, zelfs met het risico onenigheid te veroorzaken.",
+        "type": 2
+    },
+    "Vraag8": {
+        "vraag": "Teamleden wijzen elkaar op hun gebreken en/of onproductief gedrag.",
+        "type": 4
+    },
+    "Vraag9": {
+        "vraag": "Het team heeft de reputatie dat er hoge prestaties geleverd worden.",
+        "type": 5
+    },
+    "Vraag10": {
+        "vraag": "Teamleden vragen zonder aarzeling om hulp.",
+        "type": 1
+    },
+    "Vraag11": {
+        "vraag": "Teamleden verlaten vergaderingen met het vertrouwen dat iedereen zich aan de afspraken en beslissingen houdt die waren overeengekomen.",
+        "type": 3
+    },
+    "Vraag12": {
+        "vraag": "Tijdens discussies dagen teamleden elkaar uit over hoe ze aan hun conclusies en meningen zijn gekomen.",
+        "type": 2
+    },
+    "Vraag13": {
+        "vraag": "Teamleden vragen elkaar om input over hun verantwoordelijkheidsgebied.",
+        "type": 1
+    },
+    "Vraag14": {
+        "vraag": "Wanneer het team er niet in slaagt om collectieve doelen te bereiken, neemt elk teamlid persoonlijke verantwoordelijkheid.om de prestaties van het team te verbeteren.",
+        "type": 5
+    },
+    "Vraag15": {
+        "vraag": "Teamleden brengen graag offers (of doen iets extra’s) in het belang van het team.",
+        "type": 5
+    },
+    "Vraag16": {
+        "vraag": "Teamleden betrekken snel collega teamleden wanneer zich problemen voordoen binnen het eigen verantwoordelijkheidsgebied.",
+        "type": 4
+    },
+    "Vraag17": {
+        "vraag": "Teamleden erkennen en spreken elkaars vaardigheden en expertise aan.",
+        "type": 1
+    },
+    "Vraag18": {
+        "vraag": "Teamleden vragen elkaar om hun mening tijdens vergaderingen.",
+        "type": 2
+    },
+    "Vraag19": {
+        "vraag": "Teamleden sluiten besprekingen af met duidelijke afspraken en actiepunten.",
+        "type": 3
+    },
+    "Vraag20": {
+        "vraag": "Teamleden stellen elkaar vragen over hun huidige aanpak en methoden.",
+        "type": 4
+    },
+    "Vraag21": {
+        "vraag": "Het team zorgt ervoor dat leden die onvoldoende presteren de druk voelen om zich te verbeteren.",
+        "type": 4
+    },
+    "Vraag22": {
+        "vraag": "Teamleden verontschuldigen zich graag naar elkaar wanneer nodig.",
+        "type": 1
+    },
+    "Vraag23": {
+        "vraag": "Teamleden delen impopulaire meningen in de groep.",
+        "type": 2
+    },
+    "Vraag24": {
+        "vraag": "Het team is duidelijk over zijn richting en prioriteiten.",
+        "type": 3
+    },
+    "Vraag25": {
+        "vraag": "Teamleden hoeven niet per sé krediet voor hun eigen bijdragen.",
+        "type": 5
+    },
+    "Vraag26": {
+        "vraag": "Alle leden van het team zijn gehouden aan dezelfde hoge prestatienormen.",
+        "type": 4
+    },
+    "Vraag27": {
+        "vraag": "Wanneer een conflict optreedt, lost het team dit probleem eerst op voordat het overgaat naar een ander onderwerp.",
+        "type": 2
+    },
+    "Vraag28": {
+        "vraag": "Het team is gericht op de realisatie van gemeenschappelijke doelen.",
+        "type": 3
+    },
+    "Vraag29": {
+        "vraag": "Het team realiseert consequent zijn doelstellingen.",
+        "type": 5
+    },
+    "Vraag30": {
+        "vraag": "Het team is besluitvaardig, zelfs wanneer niet alle informatie beschikbaar is.",
+        "type": 3
+    },
+    "Vraag31": {
+        "vraag": "Teamleden waarderen het collectieve succes meer dan individuele prestaties.",
+        "type": 5
+    },
+    "Vraag32": {
+        "vraag": "Teamleden zijn vrij en oprecht met elkaar.",
+        "type": 1
+    },
+    "Vraag33": {
+        "vraag": "Teamleden voelen zich comfortabel om hun persoonlijke leven met elkaar te bespreken.",
+        "type": 1
+    },
+    "Vraag34": {
+        "vraag": "Het team blijft bij haar beslissingen.",
+        "type": 3
+    },
+    "Vraag35": {
+        "vraag": "Teamleden zorgen consequent voor de opvolging van gemaakte beloften en toezeggingen.",
+        "type": 4
+    },
+    "Vraag36": {
+        "vraag": "Teamleden geven ongevraagd constructieve feedback aan elkaar.",
+        "type": 4
+    },
+    "Vraag37": {
+        "vraag": "Teamleden hechten weinig belang aan titels en status.",
+        "type": 5
+    },
+    "Vraag38": {
+        "vraag": "Teamleden committeren zich aan  groepsbeslissingen, zelfs als ze het aanvankelijk niet eens waren.",
+        "type": 3
     }
 }
