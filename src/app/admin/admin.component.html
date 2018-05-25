@@ -33,9 +33,10 @@
           </fieldset>
 
 
-          <button (click)="loginAttempt()"  class="btn btn-primary btn-lg">Login</button>
-          
-        </form><br>
+          <button (click)="loginAttempt()" class="btn btn-primary btn-lg">Login</button>
+
+        </form>
+        <br>
         <div style='color:orangered' *ngIf="errorMsg == true">Geen geldig wachtwoord ingevuld</div>
       </div>
     </div>
@@ -43,59 +44,135 @@
 </div>
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 <div *ngIf="adminLogged == true">
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ETZ Admin Dash</a>
-  
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Log uit</a>
-    </li>
-  </ul>
-</nav>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ETZ Admin Dash</a>
 
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <span data-feather="home"></span>
-              Overzicht <span class="sr-only">(current)</span>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Log uit</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span data-feather="home"></span>
+                Overzicht
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Info</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+              <span data-feather="plus-circle"></span>
             </a>
-          </li>
-        </ul>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                ...
+              </a>
+            </li>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Info</span>
-          <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              ...
-            </a>
-          </li>
-         
-        </ul>
-      </div>
-    </nav>
+          </ul>
+        </div>
+      </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Admin panel</h1>
-      </div>
-      <div>
-        <ngx-datatable class="bootstrap ngx-datatable"
-          [rows]="rows"
-          [columns]="columns">
-        </ngx-datatable>
-      </div>
-    
-    </main>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Admin panel</h1>
+        </div>
+        <div>
+          <ngx-datatable class="bootstrap ngx-datatable" [rows]="rows" [columns]="columns">
+          </ngx-datatable>
+        </div>
+
+        <hr>
+        <div>
+          <div class="container">
+            <h2>Contextual Classes</h2>
+            <p>Contextual classes can be used to color the table, table rows or table cells. The classes that can be used are: .table-primary, .table-success, .table-info, .table-warning, .table-danger, .table-active, .table-secondary, .table-light and .table-dark:</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>Default</td>
+                  <td>Defaultson</td>
+                  <td>def@somemail.com</td>
+                </tr>      
+                <tr class="table-primary">
+                    <td></td>
+                  <td>Primary</td>
+                  <td>Joe</td>
+                  <td>joe@example.com</td>
+                </tr>
+                <tr class="table-success">
+                    <td></td>
+                  <td>Success</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                <tr class="table-danger">
+                    <td></td>
+                  <td>Danger</td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                </tr>
+                <tr class="table-info">
+                    <td></td>
+                  <td>Info</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+                <tr class="table-warning">
+                    <td></td>
+                  <td>Warning</td>
+                  <td>Refs</td>
+                  <td>bo@example.com</td>
+                </tr>
+                <tr class="table-active">
+                    <td></td>
+                  <td>Active</td>
+                  <td>Activeson</td>
+                  <td>act@example.com</td>
+                </tr>
+                <tr class="table-secondary">
+                    <td></td>
+                  <td>Secondary</td>
+                  <td>Secondson</td>
+                  <td>sec@example.com</td>
+                </tr>
+                <tr class="table-light">
+                    <td></td>
+                  <td>Light</td>
+                  <td>Angie</td>
+                  <td>angie@example.com</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- DivTable.com -->
+        </div>
+
+      </main>
+    </div>
   </div>
-</div>
 </div>
