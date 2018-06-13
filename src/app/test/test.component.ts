@@ -28,10 +28,11 @@ export class TestComponent implements OnInit {
   json;
   questionArray;
 
-
+  whichempty;
 
   // var for finishing test
   testFinished = false;
+  testProblem = false;
 
 
   // results of tests
@@ -65,9 +66,13 @@ export class TestComponent implements OnInit {
   }
 
   finishTest() {
-    this.testFinished = true;
+    
 
     // TODO:  check if everything has been filled in
+    let somethingempty = false;
+    const whichemptyArray = [];
+
+
 
     // make some logic for collecting test data, loop through questions
     for (let index = 0; index < this.questionArray.length; index++) {
@@ -92,20 +97,39 @@ export class TestComponent implements OnInit {
             this.result5 = this.result5 + this.questionArray[index].answer;
             break;
         }
+      } else {
+        // Something is not filled in correctly
+        somethingempty = true;
+        whichemptyArray.push(index + 1);
       }
     }
 
-    this.result1 = this.result1 / 8;
-    this.result2 = this.result2 / 8;
-    this.result3 = this.result3 / 7;
-    this.result4 = this.result4 / 7;
-    this.result5 = this.result5 / 8;
+    if (somethingempty === false) {
+      // toggle feedback template view vars
+      this.testFinished = true;
+      this.testProblem = false;
+      // everything is filled in and we are gonna send it through the API
+      this.result1 = Math.round(this.result1 / 8 * 100) / 100;
+      this.result2 = Math.round(this.result2 / 8 * 100) / 100;
+      this.result3 = Math.round(this.result3 / 7 * 100) / 100;
+      this.result4 = Math.round(this.result4 / 7 * 100) / 100;
+      this.result5 = Math.round(this.result5 / 8 * 100) / 100;
+      this.edSer.debugLog('Result 1: ' + this.result1);
+      this.edSer.debugLog('Result 2: ' + this.result2);
+      this.edSer.debugLog('Result 3: ' + this.result3);
+      this.edSer.debugLog('Result 4: ' + this.result4);
+      this.edSer.debugLog('Result 5: ' + this.result5);
+    } else {
+      // feedback to the user that something is empty
+      this.edSer.debugLog('Not everything is filled in');
+      this.edSer.debugLog(whichemptyArray);
+      this.whichempty = whichemptyArray.toString();
+      // toggle feedback template view vars
+      this.testProblem = true;
+    }
 
-    this.edSer.debugLog('Result 1: ' + this.result1);
-    this.edSer.debugLog('Result 2: ' + this.result2);
-    this.edSer.debugLog('Result 3: ' + this.result3);
-    this.edSer.debugLog('Result 4: ' + this.result4);
-    this.edSer.debugLog('Result 5: ' + this.result5);
+
+
 
   }
 

@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   gotLogin(_val) {
+    this.serCred.debugLog(_val);
     this.loading = false;
     // Check if response exist
     if (_val[0]) {

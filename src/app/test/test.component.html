@@ -1,42 +1,54 @@
 <div class="bgfill">
-<div class="container">
-   
+  <div class="container">
+
     <div class="modal-content">
-        <div class="text-center" style="margin: 0 auto;">
-            <img src="assets/logo.png" style="max-width: 250px" class="img-fluid text-center" alt="Responsive image"><br>
-        </div>
-       
+      <div class="text-center" style="margin: 0 auto;">
+        <img src="assets/logo.png" style="max-width: 250px" class="img-fluid text-center" alt="Responsive image">
+        <br>
+      </div>
+
       <div class="modal-header text-center" style="margin: 0 auto;">
         <h5 class="modal-title text-center">Vragenlijst</h5>
-     <!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
       <div class="modal-body">
         <div class="well well-sm">
-          <p style="padding-left:10px">Hieronder vind je een vragenlijst en info daarover komt hier...</p>
-            <div class="legend">
-                
-              
-                <ul>
-                    <li><span class="btn-danger"></span> 1 : Nooit</li>
-                    <li><span class="btn-warning"></span> 2 : Zelden</li>
-                    <li><span class="btn-primary"></span> 3 : Soms</li>
-                    <li><span class="btn-info"></span> 4 : Meestal</li>
-                    <li><span class="btn-success"></span> 5 :  Altijd</li>
-                    </ul>
-             </div>
-        </div>
-        <br><br><br><br>
+          <p style="padding-left:10px">Bedankt dat je tijd neemt om deze vragenlijst in te vullen. Hieronder vind je stellingen over het functioneren van je afdeling. De resultaten worden anoniem opgeslagen.</p>
+          <div class="legend">
 
-        <div *ngFor="let question of questionArray; let i = index"  class="well well-sm text-center"><br><br>
-          <p><b>Vraag {{i + 1}}</b></p> 
+
+            
+                <span class="btn-danger"></span>1: Nooit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+                <span class="btn-warning"></span>2: Zelden&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             
+                <span class="btn-primary"></span>3: Soms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+                <span class="btn-info"></span>4: Meestal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+                <span class="btn-success"></span>5: Altijd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div *ngFor="let question of questionArray; let i = index" class="well well-sm text-center">
+          <br>
+          <br>
+          <p>
+            <b>Vraag {{i + 1}}</b>
+          </p>
           <p>{{question.vraag}}</p>
           <div class="btn-group">
             <label class="btn btn-danger">
               1
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" [value]="1" [(ngModel)]="question.answer" autocomplete="off" >
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="1" [(ngModel)]="question.answer" autocomplete="off">
             </label>
             <label class="btn btn-warning" style="color:white !important">
               2
@@ -47,7 +59,7 @@
             <label class="btn btn-primary">
               3
               <br>
-              <input type="radio" name="{{'group' + (i+1)}}" [value]="3" [(ngModel)]="question.answer" autocomplete="off" >
+              <input type="radio" name="{{'group' + (i+1)}}" [value]="3" [(ngModel)]="question.answer" autocomplete="off">
 
             </label>
 
@@ -65,16 +77,23 @@
 
             </label>
 
-          </div><br>
+          </div>
+          <br>
           <!-- {{question.answer}} -->
           <br>
           <hr>
         </div>
       </div>
       <div class="modal-footer">
+       
+        <br>
+        <div *ngIf="testFinished">Bedankt voor uw waardevolle input.
+          <a [routerLink]="['/login']">Terug naar homepage</a>
+        </div>
+        <div style="color:red" *ngIf="testProblem">  Nog niet alle vragen zijn ingevuld;<br>{{whichempty}}</div>
         <button *ngIf="!testFinished" type="button" (click)="finishTest()" class="btn btn-secondary" data-dismiss="modal">Klaar met invullen</button>
-        <br><div *ngIf="testFinished">Bedankt voor het invullen! <a [routerLink]="['/login']">Terug naar homepage</a></div>
       </div>
-  
+
+    </div>
   </div>
-</div></div>
+</div>

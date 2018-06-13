@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 25, 2018 at 07:51 AM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:3306
+-- Generation Time: Jun 13, 2018 at 12:32 PM
+-- Server version: 5.6.34-log
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,6 +33,13 @@ CREATE TABLE `cfg` (
   `pwd` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cfg`
+--
+
+INSERT INTO `cfg` (`id`, `pwd`) VALUES
+(1, 'goudvis');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +53,13 @@ CREATE TABLE `groups` (
   `paskey` varchar(100) NOT NULL,
   `made` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `status`, `paskey`, `made`) VALUES
+(1, 'Testgroup', 1, 'visgoud', '2018-06-13 07:03:29');
 
 -- --------------------------------------------------------
 
@@ -67,7 +83,7 @@ CREATE TABLE `results` (
 --
 
 INSERT INTO `results` (`id`, `grouplink`, `date`, `result1`, `result2`, `result3`, `result4`, `result5`) VALUES
-(1, 0, '2018-05-25 07:47:16', '3.50', '0.00', '0.00', '0.00', '0.00');
+(1, 1, '2018-05-25 07:47:16', 3.50, 0.00, 0.00, 0.00, 0.00);
 
 --
 -- Indexes for dumped tables
@@ -99,19 +115,17 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `cfg`
 --
 ALTER TABLE `cfg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

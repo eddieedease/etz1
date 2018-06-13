@@ -23,8 +23,8 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/ngx-toastr/toastr.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/bootstrap.css",
-        "styles.css"
+        "styles.css",
+        "../node_modules/@swimlane/ngx-datatable/release/themes/bootstrap.css"
       ],
       "scripts": ["../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/jquery/dist/jquery.js",

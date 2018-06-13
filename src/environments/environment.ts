@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apilink: 'http://localhost:8888/etz1/src/api/'
+  apilink: 'http://localhost/etz1/src/api/'
 };

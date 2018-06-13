@@ -76,6 +76,34 @@ $app->get('/admnlogin/{keyy}', function (Request $request, Response $response) {
 
 
 
+// a API CALL TO LOG THE FORM Result
+// TODO not tested
+$app->get('/formSubmit/{groupid}/{res1}/{res2}/{res3}/{res4}/{res5}', function (Request $request, Response $response) {
+	// what key
+	$groupid = $request->getAttribute('groupid');
+	$res1 = $request->getAttribute('res1');
+	$res2 = $request->getAttribute('res2');
+	$res3 = $request->getAttribute('res3');
+	$res4 = $request->getAttribute('res4');
+	$res5 = $request->getAttribute('res5');
+
+
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+
+	// SQL QUERY FOR getting group id with key
+	$sqlinsertresult = "INSERT INTO results (grouplink) VALUES ('$groupid','$res1','$res2','$res3','$res4','$res5')";
+	$stmtinsertresult = $dbh->prepare($sqlinsertresult);
+	$stmtinsertresult->execute();
+	$resultinsertresult = $stmtinsertresult->fetchAll(PDO::FETCH_ASSOC);
+
+	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
+	$response = json_encode($resultinsertresult);
+	return $response;
+});
+
+
+
 
 
 
