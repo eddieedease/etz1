@@ -29,17 +29,18 @@ export class AdminComponent implements OnInit {
 
   admnPwd = '';
 
+  // start with empty rows, columns are taken care of in the html
   rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+    // { name: 'Austin', gender: 'Male', company: 'Swimlane' },
+    // { name: 'Dany', gender: 'Male', company: 'KFC' },
+    // { name: 'Molly', gender: 'Female', company: 'Burger King' },
   ];
 
-  columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
+  // columns = [
+  //   { prop: 'name' },
+  //   { name: 'Gender' },
+  //   { name: 'Company' }
+  // ];
 
   constructor(private thisrouter: Router, private serCred: EdserService) {
 
@@ -70,9 +71,16 @@ export class AdminComponent implements OnInit {
       this.adminLogged = true;
       // TODO: Set some service variables over here
       $('#adminModal').modal('hide');
+      this.serCred.API_getgroups().subscribe(value => this.gotGroups(value));
     } else {
+      // something wrong with credentials
       this.errorMsg = true;
     }
+  }
+
+  gotGroups(_val){
+    this.serCred.debugLog(_val);
+    this.rows = _val;
   }
 
 }

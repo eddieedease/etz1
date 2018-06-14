@@ -78,7 +78,7 @@ $app->get('/admnlogin/{keyy}', function (Request $request, Response $response) {
 
 // a API CALL TO LOG THE FORM Result
 // TODO not tested
-$app->get('/formSubmit/{groupid}/{res1}/{res2}/{res3}/{res4}/{res5}', function (Request $request, Response $response) {
+$app->get('/formsubmit/{groupid}/{res1}/{res2}/{res3}/{res4}/{res5}', function (Request $request, Response $response) {
 	// what key
 	$groupid = $request->getAttribute('groupid');
 	$res1 = $request->getAttribute('res1');
@@ -92,13 +92,13 @@ $app->get('/formSubmit/{groupid}/{res1}/{res2}/{res3}/{res4}/{res5}', function (
 	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 
 	// SQL QUERY FOR getting group id with key
-	$sqlinsertresult = "INSERT INTO results (grouplink) VALUES ('$groupid','$res1','$res2','$res3','$res4','$res5')";
+	$sqlinsertresult = "INSERT INTO results (grouplink, result1, result2, result3, result4, result5) VALUES ('$groupid','$res1','$res2','$res3','$res4','$res5')";
 	$stmtinsertresult = $dbh->prepare($sqlinsertresult);
 	$stmtinsertresult->execute();
-	$resultinsertresult = $stmtinsertresult->fetchAll(PDO::FETCH_ASSOC);
+	// $resultinsertresult = $stmtinsertresult->fetchAll(PDO::FETCH_ASSOC);
 
-	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
-	$response = json_encode($resultinsertresult);
+	$data = array('query' => $sqlinsertresult, 'back' => "some");
+	$response = json_encode($data);
 	return $response;
 });
 
@@ -132,6 +132,26 @@ $app->get('/getlesson/{lessonid}', function (Request $request, Response $respons
 	return $response;
 }
 );
+
+
+// API CALLS GROUP MANAGEMENT
+// API CALL
+// GET GROUPS
+$app->get('/getgroups', function (Request $request, Response $response) {
+
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+
+	// SQL QUERY FOR getting group id with key
+	$sqlgetgroups = "SELECT * FROM groups";
+	$stmtgetgroups = $dbh->prepare($sqlgetgroups);
+	$stmtgetgroups->execute();
+	$resultgetgroups = $stmtgetgroups->fetchAll(PDO::FETCH_ASSOC);
+
+	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
+	$response = json_encode($resultgetgroups);
+	return $response;
+});
 
 
 

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+ 
   gotLogin(_val) {
     this.serCred.debugLog(_val);
     this.loading = false;
@@ -57,6 +58,8 @@ export class LoginComponent implements OnInit {
     if (_val[0]) {
       // TODO: Set some service variables over here
       $('#exampleModal').modal('hide');
+      this.serCred.currentGroupID = _val[0].id;
+      this.serCred.__loggedIn = true;
       this.thisrouter.navigate(['/', 'test']);
     } else {
       this.errorMsg = true;

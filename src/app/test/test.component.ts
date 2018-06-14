@@ -16,6 +16,8 @@ import {
   EdserService
 } from '../edser.service';
 
+
+
 declare var $: any;
 
 @Component({
@@ -44,7 +46,7 @@ export class TestComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private route: ActivatedRoute, private http_: Http, private edSer: EdserService) {
+  constructor(private router: Router, private route: ActivatedRoute, private http_: Http, private edSer: EdserService, private thisrouter: Router) {
     http_.get('assets/questions/questions5.json')
       .map(response => response.json())
       .subscribe(
@@ -63,17 +65,21 @@ export class TestComponent implements OnInit {
   ngOnInit() {
     // scroll to top
     $('html,body').scrollTop(0);
+
+
+    // first up, check if one is logged in via service var
+    // if not, reroute to logging page
+    if (this.edSer.__loggedIn === false){
+      this.thisrouter.navigate(['/', 'login']);
+    }
+    
+      
   }
 
   finishTest() {
-    
-
     // TODO:  check if everything has been filled in
     let somethingempty = false;
     const whichemptyArray = [];
-
-
-
     // make some logic for collecting test data, loop through questions
     for (let index = 0; index < this.questionArray.length; index++) {
 
@@ -119,6 +125,8 @@ export class TestComponent implements OnInit {
       this.edSer.debugLog('Result 3: ' + this.result3);
       this.edSer.debugLog('Result 4: ' + this.result4);
       this.edSer.debugLog('Result 5: ' + this.result5);
+      // tslint:disable-next-line:max-line-length
+      this.edSer.API_formsubmit(this.edSer.currentGroupID, this.result1, this.result2, this.result3, this.result4, this.result5 ).subscribe(value => this.formSend(value));
     } else {
       // feedback to the user that something is empty
       this.edSer.debugLog('Not everything is filled in');
@@ -128,9 +136,14 @@ export class TestComponent implements OnInit {
       this.testProblem = true;
     }
 
-
-
-
   }
+
+
+  formSend(_val) {
+  this.edSer.debugLog(_val);
+  }
+
+    
+
 
 }

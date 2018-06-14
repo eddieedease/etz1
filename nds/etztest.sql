@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 13, 2018 at 12:32 PM
+-- Generation Time: Jun 14, 2018 at 11:51 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.7
 
@@ -83,7 +83,9 @@ CREATE TABLE `results` (
 --
 
 INSERT INTO `results` (`id`, `grouplink`, `date`, `result1`, `result2`, `result3`, `result4`, `result5`) VALUES
-(1, 1, '2018-05-25 07:47:16', 3.50, 0.00, 0.00, 0.00, 0.00);
+(1, 1, '2018-05-25 07:47:16', 3.50, 0.00, 0.00, 0.00, 0.00),
+(2, 1, '2018-06-14 11:09:33', 99.99, 99.99, 4.00, 57.00, 99.99),
+(3, 1, '2018-06-14 11:10:34', 2.38, 3.63, 4.00, 57.00, 2.75);
 
 --
 -- Indexes for dumped tables
@@ -125,7 +127,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

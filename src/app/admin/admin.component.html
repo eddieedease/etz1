@@ -37,7 +37,10 @@
 
         </form>
         <br>
-        <div style='color:orangered' *ngIf="errorMsg == true">Geen geldig wachtwoord ingevuld<br><code>Demo: goudvis</code></div>
+        <div style='color:orangered' *ngIf="errorMsg == true">Geen geldig wachtwoord ingevuld
+          <br>
+          <code>Demo: goudvis</code>
+        </div>
       </div>
     </div>
   </div>
@@ -91,76 +94,201 @@
           <h1 class="h2">Admin panel</h1>
         </div>
         <div>
-          <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40" [limit]="10"
-                  [rowHeight]="'auto'">
-                </ngx-datatable>
+
+
+          <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
+            [limit]="10" [rowHeight]="'auto'">
+            <ngx-datatable-column name="Titel" [sortable]="true">
+
+                <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                    <span (click)="sort()" style="cursor:pointer">
+                           {{column.name}}
+                   </span>
+                </ng-template>
+
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <div [innerHTML]="row['name']"></div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Acties">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <a (click)="gotoEpss(row.Code)" class="btn-floating waves-effect waves-light blue"><i class="material-icons">visibility</i></a>
+                    <a (click)="gotoEditEpss(row.Code)" class="btn-floating waves-effect waves-light orange"><i class="material-icons">edit</i></a>
+                    <a (click)="editSettingsEpss(row.Code, row.Title)" class="btn-floating  waves-effect waves-light"><i class="material-icons">settings_applications</i></a>
+
+                </ng-template>
+
+            </ngx-datatable-column>
+
+          </ngx-datatable>
         </div>
 
         <hr>
         <div>
           <div class="container">
-            <h2>Score uitslag</h2><br>
-            <table style="float: left; height: 1028px;" cellpadding="10"  width="100%">
+            <h2>Score uitslag</h2>
+            <br>
+            <table style="float: left; height: 1028px;" cellpadding="10" width="100%">
               <tbody>
-              <tr style="height: 22.8px;">
-              <td style="height: 22.8px;">&nbsp;</td>
-              <td class="table-success" style="height: 22.8px; width: 31.1082%;">
-              <b>Hoog</b>
-              <p class="western"><span style="color: #222222;"><span style="font-family: Arial, serif;">&nbsp;</span></span></p>
-              <p class="western"><span style="color: #222222;"><span style="font-family: Arial, serif;">3,75 of hoger</span></span></p>
-              </td>
-              <td class="table-warning" style="height: 22.8px"><b>Midden</b>
-              <p class="western"><span style="color: #222222;"><span style="font-family: Arial, serif;">&nbsp;</span></span></p>
-              <p class="western"><span style="color: #222222;"><span style="font-family: Arial, serif;">3,25-3,74</span></span></p>
-              </td>
-              <td class="table-danger" style="height: 22.8px">
-              <p><b>Laag</b></p>
-              <p><br />3,24 of lager</p>
-              </td>
-              </tr>
-              <tr style="height: 22px;">
-              <td class="table-primary" >&nbsp;<b>Vertrouwen</b></td>
-              <td >Uw team heeft<br />cre&euml;erde een omgeving<br />waar kwetsbaarheid<br />en openheid<br />zijn de norm.</td>
-              <td >Uw team moet dit misschien<br />meer comfortabel worden<br />kwetsbaar zijn en<br />open met elkaar<br />over individuele sterke punten,<br />zwakke punten, fouten en<br />hulp nodig.</td>
-              <td >Jouw team mist<br />noodzakelijke niveaus<br />van openheid en<br />kwetsbaarheid over<br />individuele sterke punten,<br />zwakke punten, fouten<br />en hulpbehoeften.</td>
-              </tr>
-              <tr style="height: 22px;">
-              <td class="table-light" >&nbsp;<b>Conflict</b></td>
-              <td >Je team is comfortabel<br />bezig zijn met<br />ongefilterde discussie<br />rond belangrijk<br />onderwerpen.</td>
-              <td >Uw team moet dit misschien<br />leer meer te doen<br />ongefilterde discussie<br />rond belangrijke onderwerpen.</td>
-              <td >Jouw team is dat niet<br />comfortabel innemend<br />in ongefilterd<br />discussie rond<br />belangrijke onderwerpen.</td>
-              </tr>
-              <tr style="height: 22px;">
-              <td  class="table-primary" >&nbsp;<b>Commitment</b></td>
-              <td >Je team is in staat<br />om in te kopen om te wissen<br />beslissingen die weinig achterlaten<br />ruimte voor ambigu&iuml;teit<br />en tweede gissingen.</td>
-              <td >&nbsp;Uw team kan worstelen met<br />tijden om in te kopen om te wissen<br />beslissingen. Dit zou kunnen zijn<br />het cre&euml;ren van ambigu&iuml;teit binnenin<br />de organisatie.</td>
-              <td >Je team is niet in staat<br />om in te kopen om te wissen<br />beslissingen nemen, vertrekken<br />ruimte voor ambigu&iuml;teit<br />en tweede gissingen.</td>
-              </tr>
-              <tr style="height: 22px;">
-              <td class="table-light" >&nbsp;<b>Verantwoordelijk</b></td>
-              <td >Je team niet<br />aarzel om te confronteren<br />elkaar over<br />prestaties en<br />gedragsproblemen.</td>
-              <td >Uw team misschien wel<br />aarzelend om te confronteren<br />over prestaties<br />en gedragsmatig<br />bedenkingen.</td>
-              <td >Je team aarzelt<br />om er een te confronteren<br />een andere over<br />prestaties en<br />gedragsproblemen.</td>
-              </tr>
-              <tr style="height: 22px;">
-              <td class="table-primary" >&nbsp;<b>Resultaat</b></td>
-              <td >Je teamwaarden<br />collectieve resultaten<br />meer dan individueel<br />herkenning en<br />het bereiken van status</td>
-              <td >&nbsp;Leden van je team<br />kan te veel plaatsen<br />belang op individu<br />of departementale herkenning<br />en ego, in plaats van<br />gericht op het collectief<br />doelen van het team.</td>
-              <td >Uw team moet<br />plaats meer waarde<br />op het collectieve<br />verwezenlijking van<br />resultaten, in plaats van<br />individueel of afdelingsgericht<br />erkenning<br />en ego.</td>
-              </tr>
+                <tr style="height: 22.8px;">
+                  <td style="height: 22.8px;">&nbsp;</td>
+                  <td class="table-success" style="height: 22.8px; width: 31.1082%;">
+                    <b>Hoog</b>
+                    <p class="western">
+                      <span style="color: #222222;">
+                        <span style="font-family: Arial, serif;">&nbsp;</span>
+                      </span>
+                    </p>
+                    <p class="western">
+                      <span style="color: #222222;">
+                        <span style="font-family: Arial, serif;">3,75 of hoger</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td class="table-warning" style="height: 22.8px">
+                    <b>Midden</b>
+                    <p class="western">
+                      <span style="color: #222222;">
+                        <span style="font-family: Arial, serif;">&nbsp;</span>
+                      </span>
+                    </p>
+                    <p class="western">
+                      <span style="color: #222222;">
+                        <span style="font-family: Arial, serif;">3,25-3,74</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td class="table-danger" style="height: 22.8px">
+                    <p>
+                      <b>Laag</b>
+                    </p>
+                    <p>
+                      <br />3,24 of lager</p>
+                  </td>
+                </tr>
+                <tr style="height: 22px;">
+                  <td class="table-primary">&nbsp;
+                    <b>Vertrouwen</b>
+                  </td>
+                  <td>Uw team heeft
+                    <br />cre&euml;erde een omgeving
+                    <br />waar kwetsbaarheid
+                    <br />en openheid
+                    <br />zijn de norm.</td>
+                  <td>Uw team moet dit misschien
+                    <br />meer comfortabel worden
+                    <br />kwetsbaar zijn en
+                    <br />open met elkaar
+                    <br />over individuele sterke punten,
+                    <br />zwakke punten, fouten en
+                    <br />hulp nodig.</td>
+                  <td>Jouw team mist
+                    <br />noodzakelijke niveaus
+                    <br />van openheid en
+                    <br />kwetsbaarheid over
+                    <br />individuele sterke punten,
+                    <br />zwakke punten, fouten
+                    <br />en hulpbehoeften.</td>
+                </tr>
+                <tr style="height: 22px;">
+                  <td class="table-light">&nbsp;
+                    <b>Conflict</b>
+                  </td>
+                  <td>Je team is comfortabel
+                    <br />bezig zijn met
+                    <br />ongefilterde discussie
+                    <br />rond belangrijk
+                    <br />onderwerpen.</td>
+                  <td>Uw team moet dit misschien
+                    <br />leer meer te doen
+                    <br />ongefilterde discussie
+                    <br />rond belangrijke onderwerpen.</td>
+                  <td>Jouw team is dat niet
+                    <br />comfortabel innemend
+                    <br />in ongefilterd
+                    <br />discussie rond
+                    <br />belangrijke onderwerpen.</td>
+                </tr>
+                <tr style="height: 22px;">
+                  <td class="table-primary">&nbsp;
+                    <b>Commitment</b>
+                  </td>
+                  <td>Je team is in staat
+                    <br />om in te kopen om te wissen
+                    <br />beslissingen die weinig achterlaten
+                    <br />ruimte voor ambigu&iuml;teit
+                    <br />en tweede gissingen.</td>
+                  <td>&nbsp;Uw team kan worstelen met
+                    <br />tijden om in te kopen om te wissen
+                    <br />beslissingen. Dit zou kunnen zijn
+                    <br />het cre&euml;ren van ambigu&iuml;teit binnenin
+                    <br />de organisatie.</td>
+                  <td>Je team is niet in staat
+                    <br />om in te kopen om te wissen
+                    <br />beslissingen nemen, vertrekken
+                    <br />ruimte voor ambigu&iuml;teit
+                    <br />en tweede gissingen.</td>
+                </tr>
+                <tr style="height: 22px;">
+                  <td class="table-light">&nbsp;
+                    <b>Verantwoordelijk</b>
+                  </td>
+                  <td>Je team niet
+                    <br />aarzel om te confronteren
+                    <br />elkaar over
+                    <br />prestaties en
+                    <br />gedragsproblemen.</td>
+                  <td>Uw team misschien wel
+                    <br />aarzelend om te confronteren
+                    <br />over prestaties
+                    <br />en gedragsmatig
+                    <br />bedenkingen.</td>
+                  <td>Je team aarzelt
+                    <br />om er een te confronteren
+                    <br />een andere over
+                    <br />prestaties en
+                    <br />gedragsproblemen.</td>
+                </tr>
+                <tr style="height: 22px;">
+                  <td class="table-primary">&nbsp;
+                    <b>Resultaat</b>
+                  </td>
+                  <td>Je teamwaarden
+                    <br />collectieve resultaten
+                    <br />meer dan individueel
+                    <br />herkenning en
+                    <br />het bereiken van status</td>
+                  <td>&nbsp;Leden van je team
+                    <br />kan te veel plaatsen
+                    <br />belang op individu
+                    <br />of departementale herkenning
+                    <br />en ego, in plaats van
+                    <br />gericht op het collectief
+                    <br />doelen van het team.</td>
+                  <td>Uw team moet
+                    <br />plaats meer waarde
+                    <br />op het collectieve
+                    <br />verwezenlijking van
+                    <br />resultaten, in plaats van
+                    <br />individueel of afdelingsgericht
+                    <br />erkenning
+                    <br />en ego.</td>
+                </tr>
               </tbody>
-              </table>
-              <!-- DivTable.com -->
-            
+            </table>
+            <!-- DivTable.com -->
+
           </div>
-          
+
           <!-- DivTable.com -->
         </div>
 
-        
+
 
       </main>
-      
+
     </div>
   </div>
 </div>
