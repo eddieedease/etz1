@@ -91,6 +91,11 @@ export class AdminComponent implements OnInit {
 
   showResult(_id) {
     this.showScore = !this.showScore;
+    
+  }
+
+  printResult() {
+    window.print();
   }
 
   publishToggle(_id, _status) {
