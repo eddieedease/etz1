@@ -104,34 +104,61 @@ $app->get('/formsubmit/{groupid}/{res1}/{res2}/{res3}/{res4}/{res5}', function (
 
 
 
-
-
-
-
-
-// API CALL: the GET specific LESSON
+// API CALL: Make an groupkey
 // TODO: Make DOC
 // Get a lesson item here (for the object tree)
-$app->get('/getlesson/{lessonid}', function (Request $request, Response $response) {
-	$lessonid = $request->getAttribute('lessonid');
+$app->get('/makegroup/{groupname}/{groupkey}', function (Request $request, Response $response) {
+	$groupname = $request->getAttribute('groupname');
+	$groupkey = $request->getAttribute('groupkey');
 	include 'db.php';
 	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 	// 	NOTE 5 pieces --> [0] actions [1] arcades [2] archive [3] highscores [4] teams
 	// 	a query get all the correct records from the gemeenten table
-	$sqllessons = "SELECT * FROM lessons WHERE id = '$lessonid'";
-	$stmtlessons = $dbh->prepare($sqllessons);
-	$stmtlessons->execute();
-	$resultlessons = $stmtlessons->fetchAll(PDO::FETCH_ASSOC);
+	$sqlinsertgroup = "INSERT INTO groups (name, status, paskey) VALUES ('$groupname', 1, '$groupkey')";
+	$stmtinsertgroup = $dbh->prepare($sqlinsertgroup);
+	$stmtinsertgroup->execute();
+	$resultinsertgroup = $stmtinsertgroup->fetchAll(PDO::FETCH_ASSOC);
 	
 	// 	NOTE colleting everything for converting
 	$result = array();
-	array_push($result, $resultlessons);
+	array_push($result, $resulinsertgroup);
 	
 	// 	convert it all to jSON TODO change result
-	$response = json_encode($result);
+	$response = json_encode($resultinsertgroup);
 	return $response;
 }
 );
+
+// TODO: EDIT group
+$app->get('/changestatus/{groupid}/{status}', function (Request $request, Response $response) {
+	$groupid = $request->getAttribute('groupid');
+	$status = $request->getAttribute('status');
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+	// 	NOTE 5 pieces --> [0] actions [1] arcades [2] archive [3] highscores [4] teams
+	// 	a query get all the correct records from the gemeenten table
+	$sqlupdatestatus = "UPDATE groups SET status = '$status' WHERE id = '$groupid'";
+	$stmtupdatestatus = $dbh->prepare($sqlupdatestatus);
+	$stmtupdatestatus->execute();
+	$resultupdatestatus = $stmtupdatestatus->fetchAll(PDO::FETCH_ASSOC);
+	
+	// 	NOTE colleting everything for converting
+	$result = array();
+	array_push($result, $resulupdatestatus);
+	
+	// 	convert it all to jSON TODO change result
+	$response = json_encode($resultupdatestatus);
+	return $response;
+}
+);
+
+
+
+// TODO: Change Status
+// 
+
+
+
 
 
 // API CALLS GROUP MANAGEMENT

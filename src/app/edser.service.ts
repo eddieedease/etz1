@@ -43,7 +43,6 @@ export class EdserService {
     if (environment.production !== true) {
       console.log(logging);
     }
-    //
   }
 
 
@@ -83,7 +82,7 @@ export class EdserService {
       .map(res => res.json());
   }
 
- // API CALL
+  // API CALL
   // SUBMIT result, needs groupID ,and results
   API_formsubmit(_groupid, _res1, _res2, _res3, _res4, _res5): Observable < any > {
     // tslint:disable-next-line:max-line-length
@@ -106,9 +105,45 @@ export class EdserService {
   // API CALL
   // GET GROUPS
    // API CALLSSSSSSS
-  // GET COURSE ITEM
+  // GET ALL GROUPS
   API_getgroups(): Observable < any > {
     const url = environment.apilink + 'getgroups' + '?rnd=' + new Date().getTime();
+    // tslint:disable-next-line:prefer-const
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    const options = new RequestOptions({
+      headers: headers
+    });
+    // tslint:disable-next-line:max-line-length
+    return this.http_.get(url, options)
+      .throttleTime(5000)
+      .map(res => res.json());
+  }
+
+
+  // GET GROUPS
+  // API CALLSSSSSSS
+  // ADD NEW GROUP. TAKES A NAME AND A PASKEY
+  API_addgroup(_groupname, _groupkey): Observable < any > {
+    const url = environment.apilink + '/makegroup/' + _groupname + '/' + _groupkey + '?rnd=' + new Date().getTime();
+    // tslint:disable-next-line:prefer-const
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    const options = new RequestOptions({
+      headers: headers
+    });
+    // tslint:disable-next-line:max-line-length
+    return this.http_.get(url, options)
+      .throttleTime(5000)
+      .map(res => res.json());
+  }
+
+
+  // TOGGLING CHECKBOX OF ACTIVE
+  API_statusChange(_groupid, _statusChange): Observable < any > {
+    const url = environment.apilink + '/changestatus/' + _groupid + '/' + _statusChange + '?rnd=' + new Date().getTime();
     // tslint:disable-next-line:prefer-const
     const headers = new Headers({
       'Content-Type': 'application/json'

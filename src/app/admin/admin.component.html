@@ -12,20 +12,6 @@
         <form class="">
           <h5 class="m-b-2">Wachtwoord</h5>
 
-          <!-- <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              Organisatie
-            </button> {{dropdownOrga}}
-            <br>
-            <br>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button" (click)="dropdownOrga = 'orga 1'">Orga 1</button>
-              <button class="dropdown-item" type="button" (click)="dropdownOrga = 'orga 2'">Orga 2</button>
-              <button class="dropdown-item" type="button" (click)="dropdownOrga = 'orga 3'">Orga 3</button>
-            </div>
-          </div> -->
-
           <fieldset class="form-group has-danger">
             <label for="password" class="form-control-label">Vul hier het admin wachtwoord in:</label>
             <input [(ngModel)]="admnPwd" [ngModelOptions]="{standalone: true}" type="password" class="form-control form-control-danger"
@@ -45,10 +31,73 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade modal-add" tabindex="-1" role="dialog" aria-labelledby="modal-add" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nieuwe groep toevoegen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="group_name_add" class="col-form-label">Groepnaam:</label>
+            <input [(ngModel)]="groupName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="group_name_add">
+          </div>
+          <div class="form-group">
+            <label for="paskey_add" class="col-form-label">Key:</label>
+            <p>Deze sleutel wordt om in te loggen in deze groep</p>
+            <input [(ngModel)]="pasKey" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="paskey_add">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+        <button type="button" (click)="makeGroup()" data-dismiss="modal" class="btn btn-primary">Toevoegen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bewerk groep</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="group_name_edit" class="col-form-label">Groepnaam:</label>
+            <input [(ngModel)]="groupName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="group_name_edit">
+          </div>
+          <div class="form-group">
+            <label for="paskey_edit" class="col-form-label">Key:</label>
+            <p>Deze sleutel wordt gebruikt hoe mensen inloggen</p>
+            <input [(ngModel)]="pasKey" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="paskey_edit">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+        <button type="button" (click)="editGroup()" class="btn btn-primary" data-dismiss="modal">Wijzigingen opslaan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
 <div *ngIf="adminLogged == true">
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ETZ Admin Dash</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ETZ Vragenlijst Dash</a>
 
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
@@ -72,7 +121,7 @@
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>light</span>
+            <span>..</span>
             <a class="d-flex align-items-center text-muted" href="#">
               <span data-feather="plus-circle"></span>
             </a>
@@ -91,34 +140,58 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Admin panel</h1>
+          <h2 class="h2">Groepen</h2>
+          <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target=".modal-add">
+            <i class="fa fa-plus"></i>
+          </button>
         </div>
-        <div>
+
+        <div *ngIf="!showScore">
 
 
           <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
-            [limit]="10" [rowHeight]="'auto'">
+            [limit]="40" [rowHeight]="'auto'">
             <ngx-datatable-column name="Titel" [sortable]="true">
 
-                <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
-                    <span (click)="sort()" style="cursor:pointer">
-                           {{column.name}}
-                   </span>
-                </ng-template>
+              <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                <span (click)="sort()" style="cursor:pointer">
+                  {{column.name}}
+                </span>
+              </ng-template>
 
-                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                    <div [innerHTML]="row['name']"></div>
-                </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <div [innerHTML]="row['name']"></div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actief" [sortable]="true">
+
+              <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                <span style="cursor:pointer">
+                  {{column.name}}
+                </span>
+              </ng-template>
+
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <p>{{row.Title}}
+                  <input type="checkbox" id="{{row.Title}}" name="{{row.Title}}" [(ngModel)]="row.status" (change)="publishToggle(row.id,row.status)" />
+                  <label for="{{row.Title}}"></label>
+                </p>
+              </ng-template>
+
             </ngx-datatable-column>
 
 
             <ngx-datatable-column name="Acties">
-                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                    <a (click)="gotoEpss(row.Code)" class="btn-floating waves-effect waves-light blue"><i class="material-icons">visibility</i></a>
-                    <a (click)="gotoEditEpss(row.Code)" class="btn-floating waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                    <a (click)="editSettingsEpss(row.Code, row.Title)" class="btn-floating  waves-effect waves-light"><i class="material-icons">settings_applications</i></a>
-
-                </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <div class="btn-group" style="border-radius: 10px; color: white" role="group" aria-label="Basic example">
+                  <button (click)="showResult(row.id)" type="button" class="btn btn-primary">
+                    <i class="fa fa-eye"> Bekijk</i>
+                  </button>
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".modal-edit">
+                    <i class="fa fa-edit"> Edit</i>
+                  </button>
+                </div>
+              </ng-template>
 
             </ngx-datatable-column>
 
@@ -126,8 +199,14 @@
         </div>
 
         <hr>
-        <div>
+        <div *ngIf="showScore">
           <div class="container">
+            <button type="button" (click)="showScore = false" class="btn btn-primary" data-toggle="modal">
+              <i class="fa fa-arrow-left"> Terug naar Overzicht</i>
+            </button>
+            <br>
+            <br>
+            <br>
             <h2>Score uitslag</h2>
             <br>
             <table style="float: left; height: 1028px;" cellpadding="10" width="100%">
