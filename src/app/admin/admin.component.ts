@@ -38,6 +38,8 @@ export class AdminComponent implements OnInit {
   groupName = '';
   pasKey = '';
 
+  currentGroup = '';
+
   // start with empty rows, columns are taken care of in the html
   rows = [
     // { name: 'Austin', gender: 'Male', company: 'Swimlane' },
@@ -61,7 +63,7 @@ export class AdminComponent implements OnInit {
     $('html,body').scrollTop(0);
 
     // Check if admin is logged in
-    $('#adminModal').modal('show');
+    $('#adminModal').modal('show', {backdrop: 'static', keyboard: false});
   }
 
 
@@ -91,7 +93,28 @@ export class AdminComponent implements OnInit {
 
   showResult(_id) {
     this.showScore = !this.showScore;
+
+    this.rows.forEach(element => {
+
+      if (_id === element.id) {
+        this.currentGroup = element.name;
+      }
+    });
+
     
+    
+  }
+
+
+  showEdit(_id) {
+    this.serCred.debugLog(_id);
+    this.rows.forEach(element => {
+
+      if (_id === element.id) {
+        this.groupName = element.name;
+        this.pasKey = element.paskey;
+      }
+    });
   }
 
   printResult() {

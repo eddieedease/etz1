@@ -22,9 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // Start SLim API
 $app = new \Slim\App;
 
-
-
-
 // API CALL: test call
 // TODO: Make DOC
 $app->get('/testcall', function (Request $request, Response $response) {
@@ -135,8 +132,7 @@ $app->get('/changestatus/{groupid}/{status}', function (Request $request, Respon
 	$status = $request->getAttribute('status');
 	include 'db.php';
 	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
-	// 	NOTE 5 pieces --> [0] actions [1] arcades [2] archive [3] highscores [4] teams
-	// 	a query get all the correct records from the gemeenten table
+	
 	$sqlupdatestatus = "UPDATE groups SET status = '$status' WHERE id = '$groupid'";
 	$stmtupdatestatus = $dbh->prepare($sqlupdatestatus);
 	$stmtupdatestatus->execute();
