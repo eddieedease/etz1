@@ -3,24 +3,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Admin inlog</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+       
       </div>
-
       <div class="modal-body">
         <form class="">
           <h5 class="m-b-2">Wachtwoord</h5>
-
           <fieldset class="form-group has-danger">
             <label for="password" class="form-control-label">Vul hier het admin wachtwoord in:</label>
             <input [(ngModel)]="admnPwd" [ngModelOptions]="{standalone: true}" type="password" class="form-control form-control-danger"
               id="password">
           </fieldset>
-
-
           <button (click)="loginAttempt()" class="btn btn-primary btn-lg">Login</button>
-
         </form>
         <br>
         <div style='color:orangered' *ngIf="errorMsg == true">Geen geldig wachtwoord ingevuld
@@ -31,7 +24,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="modal fade modal-add" tabindex="-1" role="dialog" aria-labelledby="modal-add" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -53,7 +45,6 @@
             <p>Deze sleutel wordt om in te loggen in deze groep</p>
             <input [(ngModel)]="pasKey" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="paskey_add">
           </div>
-
         </form>
       </div>
       <div class="modal-footer">
@@ -85,7 +76,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
-        <button type="button" (click)="editGroup()" class="btn btn-primary" data-dismiss="modal">TODO: Wijzigingen opslaan</button>
+        <button type="button" (click)="editGroup()" class="btn btn-primary" data-dismiss="modal">Wijzigingen opslaan</button>
       </div>
     </div>
   </div>
@@ -113,17 +104,12 @@
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link active" href="#">
-                <span data-feather="home"></span>
-                Vragenlijsten
                 <img src="assets/logo.png" class="img-fluid" alt="Responsive image">
               </a>
             </li>
           </ul>
-
-       
         </div>
       </nav>
-
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h2 class="h2">Groepen</h2>
@@ -131,10 +117,7 @@
             <i class="fa fa-plus"></i>
           </button>
         </div>
-
         <div *ngIf="!showScore">
-
-
           <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
             [limit]="40" [rowHeight]="'auto'">
             <ngx-datatable-column name="Titel" [sortable]="true">
@@ -166,6 +149,20 @@
 
             </ngx-datatable-column>
 
+            <ngx-datatable-column name="Acties">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <div class="btn-group" style="border-radius: 10px; color: white" role="group" aria-label="Basic example">
+                  <button (click)="showResult(row.id)" type="button" class="btn btn-primary">
+                    <i class="fa fa-eye"></i> Bekijk
+                  </button>
+                  <button (click)="showEdit(row.id)" type="button" class="btn btn-warning" data-toggle="modal" data-target=".modal-edit">
+                    <i class="fa fa-edit"></i> Edit
+                  </button>
+                </div>
+              </ng-template>
+
+            </ngx-datatable-column>
+
             <ngx-datatable-column name="Aangemaakt" [sortable]="true">
 
               <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
@@ -181,19 +178,7 @@
             </ngx-datatable-column>
 
 
-            <ngx-datatable-column name="Acties">
-              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <div class="btn-group" style="border-radius: 10px; color: white" role="group" aria-label="Basic example">
-                  <button (click)="showResult(row.id)" type="button" class="btn btn-primary">
-                    <i class="fa fa-eye"></i> Bekijk
-                  </button>
-                  <button (click)="showEdit(row.id)" type="button" class="btn btn-warning" data-toggle="modal" data-target=".modal-edit">
-                    <i class="fa fa-edit"></i> Edit
-                  </button>
-                </div>
-              </ng-template>
-
-            </ngx-datatable-column>
+           
 
           </ngx-datatable>
         </div>
@@ -207,10 +192,11 @@
             <button type="button" (click)="printResult()" class="btn btn-primary" data-toggle="modal">
                 <i class="fa fa-print"></i>Print resultaat
               </button>
-            <br>
-            <br>
-            <br>
+
+            
+            <br><br><br>
             <h2>{{currentGroup}}</h2>
+            <p>Aantal keren verstuurd: <b>{{howManySend}}</b></p>
             <h6>Score uitslag</h6>
             <br>
             <table style="float: left; height: 1028px;" cellpadding="10" width="100%">
@@ -255,19 +241,20 @@
                   <td class="table-primary">&nbsp;
                     <b>Vertrouwen</b>
                   </td>
-                  <td>Uw team heeft
-                    <br />cre&euml;erde een omgeving
+                  <td [style.color]="vertrouwen1 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen1 == true ? 'green' : 'white'">
+                    Uw team heeft
+                    <br />een omgeving gecre&euml;erd
                     <br />waar kwetsbaarheid
                     <br />en openheid
-                    <br />zijn de norm.</td>
-                  <td>Uw team moet dit misschien
+                    <br />de norm zijn.</td>
+                  <td [style.color]="vertrouwen2 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen2 == true ? '#ff8400' : 'white'">Uw team moet dit misschien
                     <br />meer comfortabel worden
                     <br />kwetsbaar zijn en
                     <br />open met elkaar
                     <br />over individuele sterke punten,
                     <br />zwakke punten, fouten en
                     <br />hulp nodig.</td>
-                  <td>Jouw team mist
+                  <td [style.color]="vertrouwen3 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen3 == true ? 'red' : 'white'">Jouw team mist
                     <br />noodzakelijke niveaus
                     <br />van openheid en
                     <br />kwetsbaarheid over
@@ -279,16 +266,16 @@
                   <td class="table-light">&nbsp;
                     <b>Conflict</b>
                   </td>
-                  <td>Je team is comfortabel
+                  <td [style.color]="conflict1 == true ? 'white' : 'black'" [style.background-color] = "conflict1 == true ? 'green' : 'white'">Je team is comfortabel
                     <br />bezig zijn met
                     <br />ongefilterde discussie
                     <br />rond belangrijk
                     <br />onderwerpen.</td>
-                  <td>Uw team moet dit misschien
+                  <td [style.color]="conflict2 == true ? 'white' : 'black'" [style.background-color] = "conflict2 == true ? '#ff8400' : 'white'">Uw team moet dit misschien
                     <br />leer meer te doen
                     <br />ongefilterde discussie
                     <br />rond belangrijke onderwerpen.</td>
-                  <td>Jouw team is dat niet
+                  <td [style.color]="conflict3 == true ? 'white' : 'black'" [style.background-color] = "conflict3 == true ? 'red' : 'white'">Jouw team is dat niet
                     <br />comfortabel innemend
                     <br />in ongefilterd
                     <br />discussie rond
@@ -298,17 +285,17 @@
                   <td class="table-primary">&nbsp;
                     <b>Commitment</b>
                   </td>
-                  <td>Je team is in staat
+                  <td [style.color]="commitment1 == true ? 'white' : 'black'" [style.background-color] = "commitment1 == true ? 'green' : 'white'">Je team is in staat
                     <br />om in te kopen om te wissen
                     <br />beslissingen die weinig achterlaten
                     <br />ruimte voor ambigu&iuml;teit
                     <br />en tweede gissingen.</td>
-                  <td>&nbsp;Uw team kan worstelen met
+                  <td [style.color]="commitment2 == true ? 'white' : 'black'" [style.background-color] = "commitment2 == true ? '#ff8400' : 'white'">&nbsp;Uw team kan worstelen met
                     <br />tijden om in te kopen om te wissen
                     <br />beslissingen. Dit zou kunnen zijn
                     <br />het cre&euml;ren van ambigu&iuml;teit binnenin
                     <br />de organisatie.</td>
-                  <td>Je team is niet in staat
+                  <td [style.color]="commitment3 == true ? 'white' : 'black'" [style.background-color] = "commitment3 == true ? 'red' : 'white'">Je team is niet in staat
                     <br />om in te kopen om te wissen
                     <br />beslissingen nemen, vertrekken
                     <br />ruimte voor ambigu&iuml;teit
@@ -318,17 +305,17 @@
                   <td class="table-light">&nbsp;
                     <b>Verantwoordelijk</b>
                   </td>
-                  <td>Je team niet
+                  <td [style.color]="verantwoordelijk1 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk1 == true ? 'green' : 'white'">Je team niet
                     <br />aarzel om te confronteren
                     <br />elkaar over
                     <br />prestaties en
                     <br />gedragsproblemen.</td>
-                  <td>Uw team misschien wel
+                  <td [style.color]="verantwoordelijk2 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk2 == true ? '#ff8400' : 'white'">Uw team misschien wel
                     <br />aarzelend om te confronteren
                     <br />over prestaties
                     <br />en gedragsmatig
                     <br />bedenkingen.</td>
-                  <td>Je team aarzelt
+                  <td [style.color]="verantwoordelijk3 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk3 == true ? 'red' : 'white'">Je team aarzelt
                     <br />om er een te confronteren
                     <br />een andere over
                     <br />prestaties en
@@ -338,19 +325,19 @@
                   <td class="table-primary">&nbsp;
                     <b>Resultaat</b>
                   </td>
-                  <td>Je teamwaarden
+                  <td [style.color]="resultaat1 == true ? 'white' : 'black'" [style.background-color] = "resultaat1 == true ? 'green' : 'white'">Je teamwaarden
                     <br />collectieve resultaten
                     <br />meer dan individueel
                     <br />herkenning en
                     <br />het bereiken van status</td>
-                  <td>&nbsp;Leden van je team
+                  <td  [style.color]="resultaat2 == true ? 'white' : 'black'" [style.background-color] = "resultaat2 == true ? '#ff8400' : 'white'">&nbsp;Leden van je team
                     <br />kan te veel plaatsen
                     <br />belang op individu
                     <br />of departementale herkenning
                     <br />en ego, in plaats van
                     <br />gericht op het collectief
                     <br />doelen van het team.</td>
-                  <td>Uw team moet
+                  <td  [style.color]="resultaat3 == true ? 'white' : 'black'" [style.background-color] = "resultaat3 == true ? 'red' : 'white'">Uw team moet
                     <br />plaats meer waarde
                     <br />op het collectieve
                     <br />verwezenlijking van

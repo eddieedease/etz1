@@ -126,7 +126,7 @@ $app->get('/makegroup/{groupname}/{groupkey}', function (Request $request, Respo
 }
 );
 
-// TODO: EDIT group
+// API: Test status
 $app->get('/changestatus/{groupid}/{status}', function (Request $request, Response $response) {
 	$groupid = $request->getAttribute('groupid');
 	$status = $request->getAttribute('status');
@@ -150,8 +150,29 @@ $app->get('/changestatus/{groupid}/{status}', function (Request $request, Respon
 
 
 
-// TODO: Change Status
+// API: Edit Group
 // 
+$app->get('/editgroup/{groupid}/{groupname}/{groupkey}', function (Request $request, Response $response) {
+	$groupid = $request->getAttribute('groupid');
+	$groupname = $request->getAttribute('groupname');
+	$groupkey = $request->getAttribute('groupkey');
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+	
+	$sqleditgroup = "UPDATE groups SET name = '$groupname', paskey = '$groupkey' WHERE id = '$groupid'";
+	$stmteditgroup  = $dbh->prepare($sqleditgroup );
+	$stmteditgroup ->execute();
+	$resulteditgroup  = $stmteditgroup ->fetchAll(PDO::FETCH_ASSOC);
+	
+	// 	NOTE colleting everything for converting
+	$result = array();
+	array_push($result, $resuleditgroup );
+	
+	// 	convert it all to jSON TODO change result
+	$response = json_encode($resulteditgroup );
+	return $response;
+}
+);
 
 
 
@@ -173,6 +194,25 @@ $app->get('/getgroups', function (Request $request, Response $response) {
 
 	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
 	$response = json_encode($resultgetgroups);
+	return $response;
+});
+
+// API CALL
+// GET SCORES OF CERTAIN GROUP
+// Note: just get the rows, the front end does the calculating
+$app->get('/getresults/{groupid}', function (Request $request, Response $response) {
+	$groupid = $request->getAttribute('groupid');
+	include 'db.php';
+	$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+
+	// SQL QUERY FOR getting group id with key
+	$sqlgetresults = "SELECT * FROM results WHERE grouplink = '$groupid'";
+	$stmtgetresults = $dbh->prepare($sqlgetresults);
+	$stmtgetresults->execute();
+	$resultgetresults = $stmtgetresults->fetchAll(PDO::FETCH_ASSOC);
+
+	// $data = array('query' => $sqlgetkey, 'back' => $resultgetkey);
+	$response = json_encode($resultgetresults);
 	return $response;
 });
 
