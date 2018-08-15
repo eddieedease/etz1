@@ -9,6 +9,15 @@
   /*
    * Sidebar
    */
+
+  table, th, td {
+    border: 1px solid black;
+}
+
+.table-light, .table-light > th, .table-light > td {
+  background-color: rgb(223, 223, 223);
+}
+
   
   .sidebar {
     position: fixed;

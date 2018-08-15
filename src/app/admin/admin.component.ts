@@ -61,8 +61,13 @@ export class AdminComponent implements OnInit {
   resultaat2 = false;
   resultaat3 = false;
 
+  vertrouwen = 0;
+  conflict = 0;
+  commitment = 0;
+  verantwoordelijk = 0;
+  resultaat = 0;
+
   // tslint:disable-next-line:max-line-length
-  resultsBoolArray = [this.vertrouwen1, this.vertrouwen2, this.vertrouwen3, this.conflict1, this.conflict2, this.conflict3, this.commitment1, this.commitment2, this.commitment3, this.verantwoordelijk1, this.verantwoordelijk2, this.verantwoordelijk3, this.resultaat1, this.resultaat2, this.resultaat3];
 
 
   showScore = false;
@@ -77,6 +82,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+
     $('html,body').scrollTop(0);
 
     // Check if admin is logged in
@@ -112,8 +118,22 @@ export class AdminComponent implements OnInit {
   }
 
   showResult(_id) {
-   
-
+    // Frist of, reset all bool values for the result table
+    this.vertrouwen1 = false;
+    this.vertrouwen2 = false;
+    this.vertrouwen3 = false;
+    this.conflict1 = false;
+    this.conflict2 = false;
+    this.conflict3 = false;
+    this.commitment1 = false;
+    this.commitment2 = false;
+    this.commitment3 = false;
+    this.verantwoordelijk1 = false;
+    this.verantwoordelijk2 = false;
+    this.verantwoordelijk3 = false;
+    this.resultaat1 = false;
+    this.resultaat2 = false;
+    this.resultaat3 = false;
     // adjust template view var
     this.showScore = !this.showScore;
 
@@ -128,11 +148,7 @@ export class AdminComponent implements OnInit {
 
   gotResults(_val) {
 
-     // Frist of, reset all bool values for the result table
-     this.resultsBoolArray.forEach(element => {
-      element = false;
-    });
-
+     
 
     this.loading = false;
     this.serCred.debugLog(_val);
@@ -157,14 +173,19 @@ export class AdminComponent implements OnInit {
     // Math.round(vertrouwen * 100) / 100
     vertrouwen = vertrouwen / this.howManySend;
     vertrouwen =  Math.round(vertrouwen * 100) / 100;
+    this.vertrouwen = vertrouwen;
     conflict = conflict / this.howManySend;
     conflict =  Math.round(conflict * 100) / 100;
+    this.conflict = conflict;
     commitment = commitment / this.howManySend;
     commitment =  Math.round(commitment * 100) / 100;
+    this.commitment = commitment;
     verantwoordelijk = verantwoordelijk  / this.howManySend;
     verantwoordelijk =  Math.round(verantwoordelijk * 100) / 100;
+    this.verantwoordelijk = verantwoordelijk;
     resultaat = resultaat / this.howManySend;
     resultaat =  Math.round(resultaat * 100) / 100;
+    this.resultaat = resultaat;
 
     this.serCred.debugLog(vertrouwen);
     this.serCred.debugLog(conflict);

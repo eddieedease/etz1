@@ -99,7 +99,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <nav class="col-md-1 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -110,7 +110,7 @@
           </ul>
         </div>
       </nav>
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <main role="main" class="col-md-11 ml-sm-auto col-lg-11 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h2 class="h2">Groepen</h2>
           <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target=".modal-add">
@@ -197,7 +197,6 @@
             <br><br><br>
             <h2>{{currentGroup}}</h2>
             <p>Aantal keren verstuurd: <b>{{howManySend}}</b></p>
-            <h6>Score uitslag</h6>
             <br>
             <table style="float: left; height: 1028px;" cellpadding="10" width="100%">
               <tbody>
@@ -240,6 +239,7 @@
                 <tr style="height: 22px;">
                   <td class="table-primary">&nbsp;
                     <b>Vertrouwen</b>
+                    <p>Tot: {{vertrouwen}}</p>
                   </td>
                   <td [style.color]="vertrouwen1 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen1 == true ? 'green' : 'white'">
                     Uw team heeft
@@ -265,6 +265,7 @@
                 <tr style="height: 22px;">
                   <td class="table-light">&nbsp;
                     <b>Conflict</b>
+                    <p>Tot: {{conflict}}</p>
                   </td>
                   <td [style.color]="conflict1 == true ? 'white' : 'black'" [style.background-color] = "conflict1 == true ? 'green' : 'white'">Je team is comfortabel
                     <br />bezig zijn met
@@ -284,6 +285,7 @@
                 <tr style="height: 22px;">
                   <td class="table-primary">&nbsp;
                     <b>Commitment</b>
+                    <p>Tot: {{commitment}}</p>
                   </td>
                   <td [style.color]="commitment1 == true ? 'white' : 'black'" [style.background-color] = "commitment1 == true ? 'green' : 'white'">Je team is in staat
                     <br />om in te kopen om te wissen
@@ -304,6 +306,7 @@
                 <tr style="height: 22px;">
                   <td class="table-light">&nbsp;
                     <b>Verantwoordelijk</b>
+                    <p>Tot: {{verantwoordelijk}}</p>
                   </td>
                   <td [style.color]="verantwoordelijk1 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk1 == true ? 'green' : 'white'">Je team niet
                     <br />aarzel om te confronteren
@@ -324,6 +327,7 @@
                 <tr style="height: 22px;">
                   <td class="table-primary">&nbsp;
                     <b>Resultaat</b>
+                    <p>Tot: {{resultaat}}</p>
                   </td>
                   <td [style.color]="resultaat1 == true ? 'white' : 'black'" [style.background-color] = "resultaat1 == true ? 'green' : 'white'">Je teamwaarden
                     <br />collectieve resultaten
