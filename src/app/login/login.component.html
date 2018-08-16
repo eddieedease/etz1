@@ -36,7 +36,8 @@
           <button (click)="loginAttempt()"  class="btn btn-primary btn-lg">Login</button>
           
         </form><br>
-        <div style='color:orangered' *ngIf="errorMsg == true">Geen (geldige) sleutel ingevoerd <br><code>Demo: visgoud</code></div>
+        <div style='color:orangered' *ngIf="errorMsg == true">Geen (geldige) sleutel ingevoerd</div>
+        <div style='color:orangered' *ngIf="errorMsg2 == true">De sleutel klopt, alleen het formulier is gesloten</div>
       </div>
     </div>
   </div>

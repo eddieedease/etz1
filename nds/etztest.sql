@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 14, 2018 at 11:51 AM
--- Server version: 5.6.34-log
--- PHP Version: 7.1.7
+-- Host: localhost
+-- Generation Time: Aug 16, 2018 at 08:30 AM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -54,13 +52,6 @@ CREATE TABLE `groups` (
   `made` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `name`, `status`, `paskey`, `made`) VALUES
-(1, 'Testgroup', 1, 'visgoud', '2018-06-13 07:03:29');
-
 -- --------------------------------------------------------
 
 --
@@ -77,15 +68,6 @@ CREATE TABLE `results` (
   `result4` decimal(4,2) NOT NULL,
   `result5` decimal(4,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `results`
---
-
-INSERT INTO `results` (`id`, `grouplink`, `date`, `result1`, `result2`, `result3`, `result4`, `result5`) VALUES
-(1, 1, '2018-05-25 07:47:16', 3.50, 0.00, 0.00, 0.00, 0.00),
-(2, 1, '2018-06-14 11:09:33', 99.99, 99.99, 4.00, 57.00, 99.99),
-(3, 1, '2018-06-14 11:10:34', 2.38, 3.63, 4.00, 57.00, 2.75);
 
 --
 -- Indexes for dumped tables
@@ -118,16 +100,18 @@ ALTER TABLE `results`
 --
 ALTER TABLE `cfg`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

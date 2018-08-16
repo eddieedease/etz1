@@ -284,8 +284,6 @@ export class AdminComponent implements OnInit {
     this.loading = false;
   }
 
-
-
   makeGroup() {
     // TODO: is everything filled in? if so continue
     if (this.groupName !== '' || this.pasKey !== '') {

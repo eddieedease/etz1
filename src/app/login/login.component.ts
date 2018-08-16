@@ -22,14 +22,11 @@ declare var $: any;
 })
 
 
-
-
 export class LoginComponent implements OnInit {
-
   // store user pwd
   usrPwd = '';
   errorMsg = false;
-
+  errorMsg2 = false;
   // loading visible view
   loading = false;
 
@@ -56,12 +53,16 @@ export class LoginComponent implements OnInit {
     this.loading = false;
     // Check if response exist
     if (_val[0]) {
-      // TODO: Set some service variables over here
-      $('#exampleModal').modal('hide');
-      this.serCred.currentGroupID = _val[0].id;
-      this.serCred.__loggedIn = true;
-      this.thisrouter.navigate(['/', 'test']);
-    } else {
+      if (_val[0].status === '1') {
+        $('#exampleModal').modal('hide');
+        this.serCred.currentGroupID = _val[0].id;
+        this.serCred.__loggedIn = true;
+        this.thisrouter.navigate(['/', 'test']);
+      } else if (_val[0].status === '0') {
+        this.errorMsg2 = true;
+      }
+   
+    }  else {
       this.errorMsg = true;
     }
   }

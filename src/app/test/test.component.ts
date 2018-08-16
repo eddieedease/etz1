@@ -80,6 +80,12 @@ export class TestComponent implements OnInit {
     // TODO:  check if everything has been filled in
     let somethingempty = false;
     const whichemptyArray = [];
+
+    this.result1 = 0;
+    this.result2 = 0;
+    this.result3 = 0;
+    this.result4 = 0;
+    this.result5 = 0;
     // make some logic for collecting test data, loop through questions
     for (let index = 0; index < this.questionArray.length; index++) {
 
@@ -92,6 +98,7 @@ export class TestComponent implements OnInit {
             break;
           case 2:
             this.result2 = this.result2 + this.questionArray[index].answer;
+            this.edSer.debugLog(this.result2);
             break;
           case 3:
             this.result3 = this.result3 + this.questionArray[index].answer;
@@ -109,6 +116,7 @@ export class TestComponent implements OnInit {
         whichemptyArray.push(index + 1);
       }
     }
+
 
     if (somethingempty === false) {
       // toggle feedback template view vars
