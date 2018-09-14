@@ -239,117 +239,49 @@
                     <b>Vertrouwen</b>
                     <p>Tot: {{vertrouwen}}</p>
                   </td>
-                  <td [style.color]="vertrouwen1 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen1 == true ? 'green' : 'white'">
-                    Uw team heeft
-                    <br />een omgeving gecre&euml;erd
-                    <br />waar kwetsbaarheid
-                    <br />en openheid
-                    <br />de norm zijn.</td>
-                  <td [style.color]="vertrouwen2 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen2 == true ? '#ff8400' : 'white'">Uw team moet dit misschien
-                    <br />meer comfortabel worden
-                    <br />kwetsbaar zijn en
-                    <br />open met elkaar
-                    <br />over individuele sterke punten,
-                    <br />zwakke punten, fouten en
-                    <br />hulp nodig.</td>
-                  <td [style.color]="vertrouwen3 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen3 == true ? 'red' : 'white'">Jouw team mist
-                    <br />noodzakelijke niveaus
-                    <br />van openheid en
-                    <br />kwetsbaarheid over
-                    <br />individuele sterke punten,
-                    <br />zwakke punten, fouten
-                    <br />en hulpbehoeften.</td>
+                  <td [style.color]="vertrouwen1 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen1 == true ? 'green' : 'white'"> Uw team heeft een omgeving gecreëerd waar kwetsbaarheid en openheid de norm zijn.</td>
+                  <td [style.color]="vertrouwen2 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen2 == true ? '#ff8400' : 'white'">Uw team mag misschien meer comfortabel worden met kwetsbaar zijn, open met elkaar zijn over individuele sterke en zwakke punten, hulp vragen en geven en het toegeven van fouten.</td>
+                  <td [style.color]="vertrouwen3 == true ? 'white' : 'black'" [style.background-color] = "vertrouwen3 == true ? 'red' : 'white'">Uw team mist de noodzakelijke niveaus van openheid, kwetsbaarheid, etc.</td>
                 </tr>
                 <tr style="height: 22px;">
                   <td class="table-light">&nbsp;
                     <b>Conflict</b>
                     <p>Tot: {{conflict}}</p>
                   </td>
-                  <td [style.color]="conflict1 == true ? 'white' : 'black'" [style.background-color] = "conflict1 == true ? 'green' : 'white'">Je team is comfortabel
-                    <br />bezig zijn met
-                    <br />ongefilterde discussie
-                    <br />rond belangrijk
-                    <br />onderwerpen.</td>
-                  <td [style.color]="conflict2 == true ? 'white' : 'black'" [style.background-color] = "conflict2 == true ? '#ff8400' : 'white'">Uw team moet dit misschien
-                    <br />leer meer te doen
-                    <br />ongefilterde discussie
-                    <br />rond belangrijke onderwerpen.</td>
-                  <td [style.color]="conflict3 == true ? 'white' : 'black'" [style.background-color] = "conflict3 == true ? 'red' : 'white'">Jouw team is dat niet
-                    <br />comfortabel innemend
-                    <br />in ongefilterd
-                    <br />discussie rond
-                    <br />belangrijke onderwerpen.</td>
+                  <td [style.color]="conflict1 == true ? 'white' : 'black'" [style.background-color] = "conflict1 == true ? 'green' : 'white'">Uw team voelt zich comfortabel in het voeren van open en eerlijke discussies rondom belangrijke thema’s.</td>
+                  <td [style.color]="conflict2 == true ? 'white' : 'black'" [style.background-color] = "conflict2 == true ? '#ff8400' : 'white'">Uw team mag  misschien meer doen om open en eerlijke discussies te voeren rondom belangrijke thema’s</td>
+                  <td [style.color]="conflict3 == true ? 'white' : 'black'" [style.background-color] = "conflict3 == true ? 'red' : 'white'">Uw team voelt zich nog niet comfortabel in het voeren van open en eerlijke discussies rondom belangrijke thema’s.</td>
                 </tr>
                 <tr style="height: 22px;">
                   <td class="table-primary">&nbsp;
                     <b>Commitment</b>
                     <p>Tot: {{commitment}}</p>
                   </td>
-                  <td [style.color]="commitment1 == true ? 'white' : 'black'" [style.background-color] = "commitment1 == true ? 'green' : 'white'">Je team is in staat
-                    <br />om in te kopen om te wissen
-                    <br />beslissingen die weinig achterlaten
-                    <br />ruimte voor ambigu&iuml;teit
-                    <br />en tweede gissingen.</td>
-                  <td [style.color]="commitment2 == true ? 'white' : 'black'" [style.background-color] = "commitment2 == true ? '#ff8400' : 'white'">&nbsp;Uw team kan worstelen met
-                    <br />tijden om in te kopen om te wissen
-                    <br />beslissingen. Dit zou kunnen zijn
-                    <br />het cre&euml;ren van ambigu&iuml;teit binnenin
-                    <br />de organisatie.</td>
-                  <td [style.color]="commitment3 == true ? 'white' : 'black'" [style.background-color] = "commitment3 == true ? 'red' : 'white'">Je team is niet in staat
-                    <br />om in te kopen om te wissen
-                    <br />beslissingen nemen, vertrekken
-                    <br />ruimte voor ambigu&iuml;teit
-                    <br />en tweede gissingen.</td>
+                  <td [style.color]="commitment1 == true ? 'white' : 'black'" [style.background-color] = "commitment1 == true ? 'green' : 'white'">Uw team is in staat om zich te committeren aan beslissingen en laat weinig ruimte voor ambiguïteit en/of onduidelijkheden hierover.</td>
+                  <td [style.color]="commitment2 == true ? 'white' : 'black'" [style.background-color] = "commitment2 == true ? '#ff8400' : 'white'">Uw team kan soms worstelen met het zich committeren aan beslissingen. Dit kan ambiguïteit en onduidelijkheid binnen het team/de organisatie teweeg brengen.</td>
+                  <td [style.color]="commitment3 == true ? 'white' : 'black'" [style.background-color] = "commitment3 == true ? 'red' : 'white'">Uw team is niet in staat om zich te committeren aan beslissingen waardoor ambiguïteit en/of onduidelijk ontstaat.</td>
                 </tr>
                 <tr style="height: 22px;">
                   <td class="table-light">&nbsp;
                     <b>Verantwoordelijk</b>
                     <p>Tot: {{verantwoordelijk}}</p>
                   </td>
-                  <td [style.color]="verantwoordelijk1 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk1 == true ? 'green' : 'white'">Je team niet
-                    <br />aarzel om te confronteren
-                    <br />elkaar over
-                    <br />prestaties en
-                    <br />gedragsproblemen.</td>
-                  <td [style.color]="verantwoordelijk2 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk2 == true ? '#ff8400' : 'white'">Uw team misschien wel
-                    <br />aarzelend om te confronteren
-                    <br />over prestaties
-                    <br />en gedragsmatig
-                    <br />bedenkingen.</td>
-                  <td [style.color]="verantwoordelijk3 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk3 == true ? 'red' : 'white'">Je team aarzelt
-                    <br />om er een te confronteren
-                    <br />een andere over
-                    <br />prestaties en
-                    <br />gedragsproblemen.</td>
+                  <td [style.color]="verantwoordelijk1 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk1 == true ? 'green' : 'white'">Uw team aarzelt niet om elkaar te confronteren met slechte prestaties en gedragsproblemen.</td>
+                  <td [style.color]="verantwoordelijk2 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk2 == true ? '#ff8400' : 'white'">Uw team is mogelijk aarzelend om elkaar te confronteren met slechte prestaties en gedragsproblemen.</td>
+                  <td [style.color]="verantwoordelijk3 == true ? 'white' : 'black'" [style.background-color] = "verantwoordelijk3 == true ? 'red' : 'white'">Uw team aarzelt om elkaar te confronteren met prestaties en gedragsproblemen.</td>
                 </tr>
                 <tr style="height: 22px;">
                   <td class="table-primary">&nbsp;
                     <b>Resultaat</b>
                     <p>Tot: {{resultaat}}</p>
                   </td>
-                  <td [style.color]="resultaat1 == true ? 'white' : 'black'" [style.background-color] = "resultaat1 == true ? 'green' : 'white'">Je teamwaarden
-                    <br />collectieve resultaten
-                    <br />meer dan individueel
-                    <br />herkenning en
-                    <br />het bereiken van status</td>
-                  <td  [style.color]="resultaat2 == true ? 'white' : 'black'" [style.background-color] = "resultaat2 == true ? '#ff8400' : 'white'">&nbsp;Leden van je team
-                    <br />kan te veel plaatsen
-                    <br />belang op individu
-                    <br />of departementale herkenning
-                    <br />en ego, in plaats van
-                    <br />gericht op het collectief
-                    <br />doelen van het team.</td>
-                  <td  [style.color]="resultaat3 == true ? 'white' : 'black'" [style.background-color] = "resultaat3 == true ? 'red' : 'white'">Uw team moet
-                    <br />plaats meer waarde
-                    <br />op het collectieve
-                    <br />verwezenlijking van
-                    <br />resultaten, in plaats van
-                    <br />individueel of afdelingsgericht
-                    <br />erkenning
-                    <br />en ego.</td>
+                  <td [style.color]="resultaat1 == true ? 'white' : 'black'" [style.background-color] = "resultaat1 == true ? 'green' : 'white'">Uw team hecht meer waarde aan collectieve resultaten dan individuele erkenning en het bereiken van status</td>
+                  <td [style.color]="resultaat2 == true ? 'white' : 'black'" [style.background-color] = "resultaat2 == true ? '#ff8400' : 'white'">Leden van uw team kunnen soms teveel waarde hechten aan status en ego, in plaats van focus op de collectieve resultaten van het team.</td>
+                  <td [style.color]="resultaat3 == true ? 'white' : 'black'" [style.background-color] = "resultaat3 == true ? 'red' : 'white'">Uw team mag meer waarde hechten aan het realiseren van collectieve doelen, in plaats van individueel gewin en ego kwesties.</td>
                 </tr>
               </tbody>
             </table>
+            <br><br><br>
             <!-- DivTable.com -->
 
           </div>
