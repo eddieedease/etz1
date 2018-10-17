@@ -284,33 +284,53 @@ export class AdminComponent implements OnInit {
     this.loading = false;
   }
 
+  resetGroupVals(){
+    this.groupName = '';
+    this.pasKey = '';
+  }
+
   makeGroup() {
     // TODO: is everything filled in? if so continue
-    if (this.groupName !== '' || this.pasKey !== '') {
+    if (this.groupName !== '' && this.pasKey !== '') {
       this.serCred.API_addgroup(this.groupName, this.pasKey).subscribe(value => this.addedGroup(value));
       this.loading = true;
     } else {
-      this.toastr.warning('Niet alle velden ingevuld', '');
+      this.toastr.warning('Niet alle velden ingevuld', 'Group is niet aangemaakt');
     }
   }
 
   // response from service
   addedGroup(_value) {
     this.serCred.debugLog(_value);
+
+
+
     this.groupName = '';
     this.pasKey = '';
     this.loading = false;
+
+    if (_value.status === 'error') {
+      console.log('yassss');
+      switch (_value.reason) {
+        case 'groupname':
+        this.toastr.warning('Groep bestaat al', 'Groep niet aangemaakt');
+          break;
+        case 'paskey':
+        this.toastr.warning('Wachtwoord bestaat al', 'Groep niet aangemaakt');
+          break;
+      }
+    }
+
     // Refetch the groups
     this.serCred.API_getgroups().subscribe(value => this.gotGroups(value));
   }
 
   editGroup() {
     this.serCred.debugLog(this.pasKey);
-    if (this.groupName !== '' || this.pasKey !== '') {
+    if (this.groupName !== '' && this.pasKey !== '') {
       this.serCred.API_editgroup(this.currentGroupID, this.groupName, this.pasKey).subscribe(value => this.groupEditted(value));
     } else {
-
-      this.toastr.warning('Veld mag niet leeg zijn', '');
+      this.toastr.warning('Veld mag niet leeg zijn', 'Group niet bewerkt');
     }
   }
 
